@@ -5,23 +5,14 @@
     android:layout_height="match_parent"
     tools:context=".ui.Food_Detail.Food_Detail">
 
-    <TextView
-        android:id="@+id/textScan"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:text="@string/nama_makanan"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        android:layout_marginTop="20dp"/>
-
     <ImageView
         android:id="@+id/ImageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_below="@+id/textScan"
-        android:layout_marginTop="10dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:background="@android:drawable/editbox_dropdown_light_frame"
         android:contentDescription="@string/camera" />
 
     <TableLayout
@@ -30,9 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/ImageView"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp">
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp">
 
         <!-- Header Row -->
         <TableRow
@@ -40,6 +30,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:layout_width="wrap_content"
                 android:padding="8dp"
                 android:text="@string/porsi_makanan"
                 android:textStyle="bold" />
@@ -58,6 +49,7 @@
                 android:padding="8dp"
                 android:text="@string/protein"
                 android:textStyle="bold" />
+
         </TableRow>
 
         <!-- Data Rows -->
@@ -88,19 +80,6 @@
         <!-- Tambahkan baris data lainnya sesuai kebutuhan -->
 
     </TableLayout>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tableLayout"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit_sed_do_eiusmod_tempor_incididunt_ut_labore_et_dolore_magna_aliqua_duis_tristique_sollicitudin_nibh_sit_amet_commodo_nulla_elementum_eu_facilisis_sed_odio_morbi_quis_commodo_odio_at_in_tellus_integer_feugiat_scelerisque_dui_faucibus_in_ornare_quam_viverra_enim_ut_tellus_elementum_sagittis_vitae_et_leo_duis_purus_faucibus_ornare_suspendisse_sed_nisi_lacus_sed_viverra_pretium_viverra_suspendisse_potenti_nullam_ac_tortor_vitae_purus_faucibus"
-        android:textSize="15sp"/>
-
-
 
 
 </RelativeLayout>
