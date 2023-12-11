@@ -5,5 +5,12 @@
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="username">Username</string>
+    <string name="register">Register</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="country">Country</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="already_have_an_account_login_here">Already have an account? Login here!</string>
+    <string name="sign_up">Sign Up</string>
 
 </resources>
