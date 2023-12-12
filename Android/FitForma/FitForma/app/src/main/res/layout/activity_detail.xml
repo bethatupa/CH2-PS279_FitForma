@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.food.DetailActivity">
+
+    <ImageView
+        android:id="@+id/detail_img"
+        android:layout_width="421dp"
+        android:layout_height="237dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+
+    <TextView
+        android:id="@+id/detail_name"
+        android:layout_width="75dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="33dp"
+        android:text="@string/name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detail_img" />
+
+    <TextView
+        android:id="@+id/food_weight"
+        android:layout_width="75dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="@string/food_weight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detail_name" />
+
+    <TextView
+        android:id="@+id/food_kal"
+        android:layout_width="75dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="70dp"
+        android:gravity="center"
+        android:text="@string/food_kal"
+        app:layout_constraintStart_toEndOf="@+id/food_weight"
+        app:layout_constraintTop_toBottomOf="@+id/detail_name" />
+
+    <TextView
+        android:id="@+id/food_karbo"
+        android:layout_width="75dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="@string/food_karbo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/food_kal"
+        app:layout_constraintTop_toBottomOf="@+id/detail_name" />
+
+    <TextView
+        android:id="@+id/detail_desc"
+        android:layout_width="370dp"
+        android:layout_height="335dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/food_kal" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
