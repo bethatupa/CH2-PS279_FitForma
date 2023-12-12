@@ -1,4 +1,4 @@
-# Golang Repository Pattern
+# FitForma Authentication
 Rest API for Registration,authenticiation Fitforma Apps
 
 ## Endpoints
