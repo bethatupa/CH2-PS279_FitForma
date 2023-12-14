@@ -1,14 +1,15 @@
 package repository
 
 import (
-	"cloud.google.com/go/firestore"
 	"context"
+	"net/http"
+	"time"
+
+	"cloud.google.com/go/firestore"
 	"github.com/bethatupa/CH2-PS279_FitForma/helper"
 	"github.com/bethatupa/CH2-PS279_FitForma/model/entity"
 	"github.com/labstack/echo/v4"
 	"golang.org/x/crypto/bcrypt"
-	"net/http"
-	"time"
 )
 
 const (
@@ -33,9 +34,19 @@ func (u *repo) Save(user *entity.User) (*entity.User, error) {
 		return nil, echo.NewHTTPError(http.StatusInternalServerError, "Failed to create a Firestore client : %v", err)
 	}
 	defer client.Close()
+
+	emailExists, err := helper.ValidateEmailExists(ctx, client, collectionName, user.Email)
+	if err != nil {
+		return nil, echo.NewHTTPError(http.StatusInternalServerError, "Error checking email existence:", err)
+	}
+
+	if emailExists {
+		return nil, echo.NewHTTPError(http.StatusBadRequest, "Email has already used.")
+	}
+
 	password, err := helper.HashAndSalted([]byte(user.Password))
 	if err != nil {
-		return nil, echo.NewHTTPError(http.StatusInternalServerError, bcrypt.ErrPasswordTooLong.Error())
+		return nil, echo.NewHTTPError(http.StatusBadRequest, bcrypt.ErrPasswordTooLong.Error())
 	}
 	_, _, err = client.Collection(collectionName).Add(ctx, map[string]interface{}{
 		"Email":     user.Email,
