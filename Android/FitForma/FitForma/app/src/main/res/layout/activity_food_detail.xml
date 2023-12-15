@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.Food_Detail.Food_Detail">
+
+    <ImageView
+        android:id="@+id/ImageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:background="@android:drawable/editbox_dropdown_light_frame"
+        android:contentDescription="@string/camera" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ImageView"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp">
+
+        <!-- Header Row -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:padding="8dp"
+                android:text="@string/porsi_makanan"
+                android:textStyle="bold" />
+
+            <TextView
+                android:padding="8dp"
+                android:text="@string/kalori"
+                android:textStyle="bold" />
+
+            <TextView
+                android:padding="8dp"
+                android:text="@string/karbohidrat"
+                android:textStyle="bold" />
+
+            <TextView
+                android:padding="8dp"
+                android:text="@string/protein"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+        <!-- Data Rows -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Porsi Makanan -->
+            <TextView
+                android:padding="8dp"
+                android:text="@string/_1_porsi" />
+
+            <!-- Kalori -->
+            <TextView
+                android:padding="8dp"
+                android:text="@string/_300" />
+
+            <!-- Karbohidrat -->
+            <TextView
+                android:padding="8dp"
+                android:text="@string/_30g" />
+
+            <TextView
+                android:padding="8dp"
+                android:text="@string/_30g" />
+        </TableRow>
+
+        <!-- Tambahkan baris data lainnya sesuai kebutuhan -->
+
+    </TableLayout>
+
+
+</RelativeLayout>
