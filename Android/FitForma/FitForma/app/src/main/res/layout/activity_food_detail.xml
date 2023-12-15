@@ -58,26 +58,16 @@
             android:layout_height="wrap_content">
 
             <!-- Porsi Makanan -->
-            <TextView
-                android:padding="8dp"
-                android:text="@string/_1_porsi" />
+
 
             <!-- Kalori -->
-            <TextView
-                android:padding="8dp"
-                android:text="@string/_300" />
+
 
             <!-- Karbohidrat -->
-            <TextView
-                android:padding="8dp"
-                android:text="@string/_30g" />
 
-            <TextView
-                android:padding="8dp"
-                android:text="@string/_30g" />
+
+
         </TableRow>
-
-        <!-- Tambahkan baris data lainnya sesuai kebutuhan -->
 
     </TableLayout>
 

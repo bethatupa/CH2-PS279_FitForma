@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp">
-
-    <TextView
-        android:id="@+id/welcomeGreet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/register"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/usernameTextInputLayout"
@@ -141,20 +131,17 @@
         android:text="@string/signup" />
 
     <TextView
-        android:id="@+id/textView"
+
+        android:fontFamily="@font/roboto_medium"
+        android:id="@+id/welcomeGreet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_medium"
-        android:text="@string/register"
+        android:layout_marginTop="20dp"
         android:textColor="@color/black"
+        android:text="@string/register"
         android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.093" />
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/InputUsername"
@@ -213,7 +200,6 @@
         app:layout_constraintEnd_toEndOf="@+id/InputName"
         app:layout_constraintStart_toStartOf="@+id/InputName"
         app:layout_constraintTop_toBottomOf="@+id/InputName"
-        tools:ignore="TextFields"
         android:autofillHints="" />
 
     <EditText
@@ -272,7 +258,6 @@
         android:autofillHints=""
         tools:ignore="TextFields" />
 
-    <!--    Button nya kok ga berubah ya warna nya -->
     <TextView
         android:id="@+id/textView4"
         android:layout_width="0dp"
@@ -283,36 +268,8 @@
         app:layout_constraintEnd_toEndOf="@+id/InputConfrimPassword"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/InputConfrimPassword"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
-
-    <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_marginTop="16dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:text="@string/sign_up"
-        android:textColor="#FFFF"
-        app:backgroundTint="#042A2B"
-        android:background="@drawable/input_bg"
-        app:layout_constraintEnd_toEndOf="@+id/InputConfrimPassword"
-        app:layout_constraintHorizontal_bias="0.521"
-        app:layout_constraintStart_toStartOf="@+id/InputConfrimPassword"
-        app:layout_constraintTop_toBottomOf="@+id/InputConfrimPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRegister"
+        tools:ignore="UnknownId" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-        android:id="@+id/textViewSignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnLogin"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:text="@string/registerad"
-        android:textSize="12sp"
-        android:textColor="@color/blue"
-        android:textStyle="bold"
-        android:onClick="navigateToLogin"/>
 </RelativeLayout>
