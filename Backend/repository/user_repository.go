@@ -14,27 +14,28 @@ import (
 	"google.golang.org/api/iterator"
 )
 
-const (
-	projectID      string = "fitforma-prod"
-	collectionName string = "users"
-)
+const collectionName string = "users"
 
 type UserRepository interface {
 	Save(user *entity.User) (*entity.User, error)
 	Authenticate(req *entity.LoginPayload) error
 }
 
-type repo struct{}
+type repo struct {
+	projectID string
+}
 
-func NewUserRepository() UserRepository {
-	return &repo{}
+func NewUserRepository(projectId string) UserRepository {
+	return &repo{
+		projectID: projectId,
+	}
 }
 
 func (u *repo) Save(user *entity.User) (*entity.User, error) {
 	ctx := context.Background()
-	client, err := firestore.NewClient(ctx, projectID)
+	client, err := firestore.NewClient(ctx, u.projectID)
 	if err != nil {
-		return nil, echo.NewHTTPError(http.StatusInternalServerError, "Failed to create a Firestore client : %v", err)
+		return nil, echo.NewHTTPError(http.StatusInternalServerError, "Failed to create a Firestore client")
 	}
 	defer client.Close()
 
@@ -58,16 +59,16 @@ func (u *repo) Save(user *entity.User) (*entity.User, error) {
 		"CreatedAt": time.Now(),
 	})
 	if err != nil {
-		return nil, echo.NewHTTPError(http.StatusInternalServerError, "Failed to adding a new user: %v", err)
+		return nil, echo.NewHTTPError(http.StatusInternalServerError, "Failed to adding a new user")
 	}
 	return user, nil
 }
 
 func (u *repo) Authenticate(req *entity.LoginPayload) error {
 	ctx := context.Background()
-	client, err := firestore.NewClient(ctx, projectID)
+	client, err := firestore.NewClient(ctx, u.projectID)
 	if err != nil {
-		return echo.NewHTTPError(http.StatusInternalServerError, "Failed to create a Firestore client : %v", err)
+		return echo.NewHTTPError(http.StatusInternalServerError, "Failed to create a Firestore client")
 	}
 	defer client.Close()
 
@@ -81,7 +82,7 @@ func (u *repo) Authenticate(req *entity.LoginPayload) error {
 			break
 		}
 		if err != nil {
-			return echo.NewHTTPError(http.StatusInternalServerError, "Error fetching document: %v", err)
+			return echo.NewHTTPError(http.StatusInternalServerError, err.Error())
 		}
 		if docSnap.Exists() {
 			userExists = true

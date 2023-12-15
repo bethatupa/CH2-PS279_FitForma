@@ -1,8 +1,10 @@
 package main
 
 import (
+	"log"
 	"math/rand"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/bethatupa/CH2-PS279_FitForma/helper"
@@ -14,12 +16,24 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-var SECRET_KEY = []byte("my-secret-key")
+var SECRET_KEY []byte
 
 func main() {
+	secretKey, ok := os.LookupEnv("MY_SECRET_KEY")
+	if !ok {
+		log.Fatal("Set your secret key")
+	}
+	SECRET_KEY = []byte(secretKey)
+
+	projectId, ok := os.LookupEnv("PROJECT_ID")
+	if !ok {
+		log.Fatal("Set your firestore project id")
+	}
+
 	e := echo.New()
 	v := validator.New()
-	var repo repository.UserRepository = repository.NewUserRepository()
+
+	var repo repository.UserRepository = repository.NewUserRepository(projectId)
 
 	e.POST("/api/v1/users", func(c echo.Context) error {
 		req := web.UserRequest{}

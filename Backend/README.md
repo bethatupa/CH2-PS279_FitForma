@@ -1,6 +1,14 @@
 # FitForma Authentication
 Rest API for Registration,authenticiation Fitforma Apps
 
+
+## Setup Environtment
+
+```bash
+export MY_SECRET_KEY = ""
+export PROJECT_ID=""
+```
+
 ## Endpoints
 
 ### Create User 
