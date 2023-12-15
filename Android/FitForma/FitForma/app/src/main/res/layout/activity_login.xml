@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp">
 
     <ImageView
@@ -23,30 +24,53 @@
         android:textStyle="bold"
         android:layout_centerHorizontal="true"/>
 
-    <EditText
-        android:id="@+id/editTextUsername"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/usernameTextInputLayout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/welcomeGreet"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:hint="@string/username" />
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusBottomEnd="20dp"
+        android:layout_below="@+id/welcomeGreet">
 
-    <EditText
-        android:id="@+id/editTextPassword"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/username" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordTextInputLayout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/editTextUsername"
-        android:layout_marginTop="20dp"
-        android:hint="@string/password"
-        android:inputType="textPassword" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/usernameTextInputLayout"
+        android:layout_marginTop="10dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleDrawable="@drawable/show_pass">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="150dp"
         android:layout_centerHorizontal="true"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextPassword"
-        android:layout_marginTop="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/passwordTextInputLayout"
+        android:layout_marginTop="40dp"
         android:backgroundTint="@color/dark_blue"
         android:text="@string/login" />
 
@@ -56,8 +80,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnLogin"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="30dp"
         android:text="@string/signup_ad"
         android:textColor="@color/blue"
-        android:textStyle="bold"/>
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:onClick="navigateToRegister"/>
 </RelativeLayout>
