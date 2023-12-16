@@ -13,10 +13,10 @@
         android:theme="@style/Theme.FitForma"
         tools:targetApi="31">
         <activity
-            android:name=".ui.slider.PersonInfoActivity"
+            android:name=".ui.Scan.ScanActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.food.DetailActivity"
+            android:name=".ui.Food_Detail.Food_Detail"
             android:exported="false" />
         <activity
             android:name=".ui.account.AccountActivity"

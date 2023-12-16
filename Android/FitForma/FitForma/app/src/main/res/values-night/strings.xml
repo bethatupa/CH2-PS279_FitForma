@@ -5,21 +5,4 @@
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="username">Username</string>
-    <string name="register">Register</string>
-    <string name="confpassword">Confirm Password</string>
-    <string name="registerad">Already have an account ? Login here !</string>
-    <string name="country">Country</string>
-    <string name="name">Name</string>
-    <string name="email">Email</string>
-    <string name="signup">Sign Up</string>
-    <string name="err_username">username cannot be empty!</string>
-    <string name="err_pass">password cannot be empty!</string>
-    <string name="slider_greet">Hello,\nPlease fill in your body composition</string>
-    <string name="description">item description</string>
-    <string name="food_weight">weight</string>
-    <string name="food_kal">calory</string>
-    <string name="food_karbo">carbo</string>
-    <string name="home">Home</string>
-    <string name="search">Search</string>
-    <string name="account">Account</string>
 </resources>
