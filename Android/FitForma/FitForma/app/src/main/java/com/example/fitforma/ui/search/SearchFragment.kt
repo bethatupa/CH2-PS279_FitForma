@@ -55,7 +55,7 @@ class SearchFragment : Fragment() {
             requestPermissionLauncher.launch(REQUIRED_PERMISSION)
         }
 
-        binding.camScan.setOnClickListener { startCamera() }
+        binding.searchScanBtn.setOnClickListener { startCamera() }
     }
 
     private fun startCamera() {

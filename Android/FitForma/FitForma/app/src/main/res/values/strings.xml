@@ -25,5 +25,10 @@
     <string name="editProfile">Edit Profile</string>
     <string name="logout">Logout</string>
     <string name="searchbar_hint">Search Food or Scan</string>
+    <string name="age">Age</string>
+    <string name="weight">Body Weight</string>
+    <string name="height">Body Height</string>
+    <string name="searchad">Get to know your food!</string>
+    <string name="scan">Scan</string>
 
 </resources>
