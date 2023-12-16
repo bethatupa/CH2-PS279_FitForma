@@ -139,7 +139,6 @@
         android:autofillHints=""
         tools:ignore="TextFields" />
 
-    <!--    Button nya kok ga berubah ya warna nya -->
     <TextView
         android:id="@+id/textView4"
         android:layout_width="0dp"
@@ -168,6 +167,5 @@
         app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="@+id/InputConfrimPassword"
         app:layout_constraintTop_toBottomOf="@+id/InputConfrimPassword" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
