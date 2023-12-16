@@ -4,13 +4,16 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import com.example.fitforma.R
 import com.example.fitforma.databinding.ActivityLoginBinding
+import com.example.fitforma.ui.main.MainActivity
 import com.example.fitforma.ui.register.RegisterActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -18,9 +21,11 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var passwordEditText: TextInputEditText
     private var isPasswordVisible = false
 
+    private lateinit var firebaseAuth : FirebaseAuth
+
 
     //private val viewModel by viewModels<LoginViewModel>{
-    //not yet implemented
+        //not yet implemented
     //}
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,14 +33,38 @@ class LoginActivity : AppCompatActivity() {
         binding =ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        firebaseAuth  = FirebaseAuth.getInstance()
+        binding.textViewSignUp.setOnClickListener{
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnLogin.setOnClickListener{
+            val email = binding.editTextEmail.text.toString()
+            val pass = binding.passwordEditText.text.toString()
+
+            if (email.isNotEmpty() && pass.isNotEmpty()) {
+
+                firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+
+                    }
+                }
+            } else {
+                Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
+            }
+        }
+
         passwordTextInputLayout = findViewById(R.id.passwordTextInputLayout)
         passwordEditText = findViewById(R.id.passwordEditText)
 
         passwordTextInputLayout.setEndIconOnClickListener {
             togglePasswordVisibility()
         }
-
-        setupAction()
     }
 
     private fun togglePasswordVisibility() {
@@ -56,28 +85,13 @@ class LoginActivity : AppCompatActivity() {
         passwordEditText.text?.let { passwordEditText.setSelection(it.length) }
     }
 
-    private fun setupAction(){
-        binding.btnLogin.setOnClickListener{
-            val username = binding.editTextUsername.text.toString()
-            val password = binding.passwordEditText.text.toString()
-            when{
-                username == "" ->{
-                    binding.editTextUsername.error = getString(R.string.err_username)
-                }
-                password == "" ->{
-                    binding.passwordEditText.error = getString(R.string.err_pass)
-                }
-                else->{
-                    //not yet implemented
-                }
-            }
+    override fun onStart() {
+        super.onStart()
+
+        if(firebaseAuth.currentUser != null){
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
-
-    fun navigateToRegister(view: android.view.View){
-        val intent = Intent(this, RegisterActivity::class.java)
-        startActivity(intent)
-    }
-
 
 }

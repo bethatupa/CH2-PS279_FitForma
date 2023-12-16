@@ -8,7 +8,7 @@ import com.example.fitforma.R
 import com.example.fitforma.ui.login.LoginActivity
 
 class WelcomeActivity : AppCompatActivity() {
-    private val delayMillis: Long = 2000 // 3 seconds
+    private val delayMillis: Long = 2000 //seconds
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

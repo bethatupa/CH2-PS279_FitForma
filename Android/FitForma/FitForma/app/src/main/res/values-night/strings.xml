@@ -22,4 +22,7 @@
     <string name="home">Home</string>
     <string name="search">Search</string>
     <string name="account">Account</string>
+    <string name="editProfile">Edit Profile</string>
+    <string name="logout">Logout</string>
+    <string name="searchbar_hint">Search Food or Scan</string>
 </resources>

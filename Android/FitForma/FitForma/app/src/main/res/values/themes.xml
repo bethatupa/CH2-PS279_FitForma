@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.FitForma" parent="Base.Theme.FitForma" />
+    <style name="SlideActivityAnim" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+    </style>
 </resources>
