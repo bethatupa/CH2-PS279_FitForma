@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        bottomNavigationView = findViewById(R.id.bottom_nav)
+        bottomNavigationView = binding.bottomNav
         bottomNavigationView.setOnItemSelectedListener{ bottom_navigation_menu ->
             when(bottom_navigation_menu.itemId){
                 R.id.navigation_home -> {
