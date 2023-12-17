@@ -1,14 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.MainFragment">
+    android:padding="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="main fragment" />
+        android:id="@+id/main_greeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main_greet"
+        android:textColor="@color/black"
+        android:textSize="20sp"/>
 
-</FrameLayout>
+<!--    person image changing dynamicly on activity-->
+    <ImageView
+        android:id="@+id/tv_person"
+        android:layout_width="190dp"
+        android:layout_height="278dp"
+        android:layout_below="@id/tv_username"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:src="@drawable/person_normal_black" />
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/main_greeting"
+        android:text="@string/username"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="22sp"/>
+
+    <TextView
+        android:id="@+id/tv_bmi"
+        android:layout_width="100dp"
+        android:layout_height="115dp"
+        android:layout_below="@id/tv_username"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/tv_person"
+        android:text="@string/bmi"
+        android:textSize="25sp"
+        android:padding="10dp"
+        android:background="@drawable/shadow_bg"/>
+
+    <TextView
+        android:id="@+id/tv_bmr"
+        android:layout_width="100dp"
+        android:layout_height="115dp"
+        android:layout_below="@id/tv_bmi"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_toEndOf="@+id/tv_person"
+        android:text="@string/bmr"
+        android:textSize="25sp"
+        android:padding="10dp"
+        android:background="@drawable/shadow_bg"/>
+
+    <TextView
+        android:id="@+id/tv_saran"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_person"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30sp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="@string/saran"/>
+
+    <TextView
+        android:id="@+id/tv_saran_desc"
+        android:layout_width="330dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/tv_saran"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/saran_desc"
+        android:textSize="15sp" />
+
+
+</RelativeLayout>
