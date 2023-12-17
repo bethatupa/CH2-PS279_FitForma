@@ -36,7 +36,7 @@
         android:layout_below="@+id/welcomeGreet">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/emailEdt"
+            android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email" />
@@ -54,10 +54,10 @@
         app:boxCornerRadiusBottomStart="20dp"
         app:boxCornerRadiusBottomEnd="20dp"
         app:passwordToggleEnabled="true"
-        app:passwordToggleDrawable="@drawable/visibility">
+        app:passwordToggleDrawable="@drawable/show_pass">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passwordEdt"
+            android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"

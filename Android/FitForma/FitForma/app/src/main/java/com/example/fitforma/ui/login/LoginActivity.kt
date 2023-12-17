@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModel
 import com.example.fitforma.R
 import com.example.fitforma.databinding.ActivityLoginBinding
 import com.example.fitforma.ui.main.MainActivity
@@ -39,8 +40,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnLogin.setOnClickListener{
-            val email = binding.emailEdt.text.toString()
-            val pass = binding.passwordEdt.text.toString()
+            val email = binding.editTextEmail.text.toString()
+            val pass = binding.passwordEditText.text.toString()
 
             if (email.isNotEmpty() && pass.isNotEmpty()) {
 
@@ -58,8 +59,8 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        passwordTextInputLayout = binding.passwordTextInputLayout
-        passwordEditText = binding.passwordEdt
+        passwordTextInputLayout = findViewById(R.id.passwordTextInputLayout)
+        passwordEditText = findViewById(R.id.passwordEditText)
 
         passwordTextInputLayout.setEndIconOnClickListener {
             togglePasswordVisibility()
@@ -70,9 +71,9 @@ class LoginActivity : AppCompatActivity() {
         isPasswordVisible = !isPasswordVisible
 
         val drawable: Drawable? = if (isPasswordVisible) {
-            ContextCompat.getDrawable(this, R.drawable.visibility_off)
+            ContextCompat.getDrawable(this, R.drawable.hide_pass)
         } else {
-            ContextCompat.getDrawable(this, R.drawable.visibility)
+            ContextCompat.getDrawable(this, R.drawable.show_pass)
         }
 
         passwordTextInputLayout.endIconDrawable = drawable
