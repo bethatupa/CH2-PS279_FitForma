@@ -6,55 +6,5 @@
     android:layout_height="match_parent"
     tools:context=".ui.account.AccountActivity">
 
-    <ImageView
-        android:id="@+id/profileImage"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        tools:src="@tools:sample/avatars"
-        android:scaleType="centerCrop"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"/>
-
-    <TextView
-        android:id="@+id/usernameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/name"
-        android:textStyle="bold"
-        android:textSize="28sp"
-        android:layout_below="@id/profileImage"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"/>
-
-    <TextView
-        android:id="@+id/emailTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/email"
-        android:textSize="14sp"
-        android:layout_below="@id/usernameTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="4dp"/>
-
-    <Button
-        android:id="@+id/editProfileButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/editProfile"
-        android:backgroundTint="@color/blue"
-        android:layout_below="@id/emailTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"/>
-
-    <Button
-        android:id="@+id/logoutBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/logout"
-        android:backgroundTint="@color/red"
-        android:layout_below="@id/editProfileButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"/>
-
 
 </RelativeLayout>

@@ -70,7 +70,7 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
     }
-
+//TODO benerin koneksi firestore
     private fun registerAcc(
         name: String,
         email: String,

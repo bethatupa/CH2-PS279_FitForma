@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.account.AccountActivity">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profileImage"
         android:layout_width="96dp"
         android:layout_height="96dp"
@@ -36,17 +36,46 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="4dp"/>
 
-    //nambahin penampil data-data user
+    <TextView
+        android:id="@+id/ageTextView"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/emailTextView"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:padding="10dp"
+        android:text="@string/age"
+        android:textSize="20sp"/>
+    <TextView
+        android:id="@+id/weightTextView"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ageTextView"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:padding="10dp"
+        android:text="@string/weight"
+        android:textSize="20sp"/>
+    <TextView
+        android:id="@+id/heightTextView"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/weightTextView"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:padding="10dp"
+        android:text="@string/height"
+        android:textSize="20sp"/>
 
-<!--    <Button-->
-<!--        android:id="@+id/editProfileButton"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="@string/editProfile"-->
-<!--        android:backgroundTint="@color/blue"-->
-<!--        android:layout_below="@id/emailTextView"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:layout_marginTop="16dp"/>-->
+    <Button
+        android:id="@+id/editProfileButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/editProfile"
+        android:backgroundTint="@color/blue"
+        android:layout_below="@id/heightTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
 
     <Button
         android:id="@+id/logoutBtn"
@@ -54,7 +83,7 @@
         android:layout_height="wrap_content"
         android:text="@string/logout"
         android:backgroundTint="@color/red"
-        android:layout_below="@id/emailTextView"
+        android:layout_below="@id/editProfileButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"/>
 

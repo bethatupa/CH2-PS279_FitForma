@@ -8,7 +8,7 @@
 
     <ImageView
         android:id="@+id/detail_img"
-        android:layout_width="421dp"
+        android:layout_width="420dp"
         android:layout_height="237dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,9 +18,9 @@
 
     <TextView
         android:id="@+id/detail_name"
-        android:layout_width="75dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="29dp"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="33dp"
         android:text="@string/name"
         android:textSize="20sp"
@@ -32,10 +32,12 @@
         android:id="@+id/food_weight"
         android:layout_width="75dp"
         android:layout_height="37dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="12dp"
         android:gravity="center"
         android:text="@string/food_weight"
+        android:textStyle="bold"
+        android:background="@drawable/shadow_bg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detail_name" />
 
@@ -47,6 +49,8 @@
         android:layout_marginStart="70dp"
         android:gravity="center"
         android:text="@string/food_kal"
+        android:textStyle="bold"
+        android:background="@drawable/shadow_bg"
         app:layout_constraintStart_toEndOf="@+id/food_weight"
         app:layout_constraintTop_toBottomOf="@+id/detail_name" />
 
@@ -54,20 +58,22 @@
         android:id="@+id/food_karbo"
         android:layout_width="75dp"
         android:layout_height="37dp"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="35dp"
         android:layout_marginTop="12dp"
         android:gravity="center"
         android:text="@string/food_karbo"
+        android:textStyle="bold"
+        android:background="@drawable/shadow_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/food_kal"
         app:layout_constraintTop_toBottomOf="@+id/detail_name" />
 
     <TextView
         android:id="@+id/detail_desc"
-        android:layout_width="370dp"
-        android:layout_height="335dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
         android:text="@string/description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/food_kal" />

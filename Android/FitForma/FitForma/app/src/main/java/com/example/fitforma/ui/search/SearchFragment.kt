@@ -39,7 +39,6 @@ class SearchFragment : Fragment() {
             REQUIRED_PERMISSION
         ) == PackageManager.PERMISSION_GRANTED
 
-    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
