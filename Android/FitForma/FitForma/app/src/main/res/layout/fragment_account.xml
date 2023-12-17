@@ -36,15 +36,17 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="4dp"/>
 
-    <Button
-        android:id="@+id/editProfileButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/editProfile"
-        android:backgroundTint="@color/blue"
-        android:layout_below="@id/emailTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"/>
+    //nambahin penampil data-data user
+
+<!--    <Button-->
+<!--        android:id="@+id/editProfileButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/editProfile"-->
+<!--        android:backgroundTint="@color/blue"-->
+<!--        android:layout_below="@id/emailTextView"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="16dp"/>-->
 
     <Button
         android:id="@+id/logoutBtn"
@@ -52,7 +54,7 @@
         android:layout_height="wrap_content"
         android:text="@string/logout"
         android:backgroundTint="@color/red"
-        android:layout_below="@id/editProfileButton"
+        android:layout_below="@id/emailTextView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"/>
 

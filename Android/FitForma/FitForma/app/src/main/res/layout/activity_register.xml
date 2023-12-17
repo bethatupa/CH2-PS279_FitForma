@@ -16,24 +16,6 @@
         android:textStyle="bold"
         android:layout_centerHorizontal="true"/>
 
-<!--    <com.google.android.material.textfield.TextInputLayout-->
-<!--        android:id="@+id/usernameTextInputLayout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        app:boxCornerRadiusTopEnd="20dp"-->
-<!--        app:boxCornerRadiusTopStart="20dp"-->
-<!--        app:boxCornerRadiusBottomStart="20dp"-->
-<!--        app:boxCornerRadiusBottomEnd="20dp"-->
-<!--        android:layout_below="@+id/welcomeGreet">-->
-
-<!--        <com.google.android.material.textfield.TextInputEditText-->
-<!--            android:id="@+id/editTextUsername"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:hint="@string/username" />-->
-<!--    </com.google.android.material.textfield.TextInputLayout>-->
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameTextInputLayout"
         android:layout_width="match_parent"
@@ -46,17 +28,74 @@
         android:layout_below="@+id/welcomeGreet">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextName"
+            android:id="@+id/nameEdt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/name" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ageTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusBottomEnd="20dp"
+        android:layout_below="@+id/emailTextInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ageEdt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="@string/age" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/weightTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusBottomEnd="20dp"
+        android:layout_below="@+id/ageTextInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/weightEdt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="@string/weight" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/heightTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusBottomEnd="20dp"
+        android:layout_below="@+id/weightTextInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/heightEdt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="@string/height" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         app:boxCornerRadiusTopEnd="20dp"
         app:boxCornerRadiusTopStart="20dp"
         app:boxCornerRadiusBottomStart="20dp"
@@ -64,45 +103,27 @@
         android:layout_below="@+id/nameTextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextEmail"
+            android:id="@+id/emailEdt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email" />
     </com.google.android.material.textfield.TextInputLayout>
 
-<!--    <com.google.android.material.textfield.TextInputLayout-->
-<!--        android:id="@+id/countryTextInputLayout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        app:boxCornerRadiusTopEnd="20dp"-->
-<!--        app:boxCornerRadiusTopStart="20dp"-->
-<!--        app:boxCornerRadiusBottomStart="20dp"-->
-<!--        app:boxCornerRadiusBottomEnd="20dp"-->
-<!--        android:layout_below="@+id/emailTextInputLayout">-->
-
-<!--        <com.google.android.material.textfield.TextInputEditText-->
-<!--            android:id="@+id/editTextCountry"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:hint="@string/country" />-->
-<!--    </com.google.android.material.textfield.TextInputLayout>-->
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/emailTextInputLayout"
+        android:layout_below="@+id/heightTextInputLayout"
         android:layout_marginTop="10dp"
         app:boxCornerRadiusTopEnd="20dp"
         app:boxCornerRadiusTopStart="20dp"
         app:boxCornerRadiusBottomStart="20dp"
         app:boxCornerRadiusBottomEnd="20dp"
         app:passwordToggleEnabled="true"
-        app:passwordToggleDrawable="@drawable/show_pass">
+        app:passwordToggleDrawable="@drawable/visibility">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passwordEditText"
+            android:id="@+id/passwordEdt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
@@ -120,10 +141,10 @@
         app:boxCornerRadiusBottomStart="20dp"
         app:boxCornerRadiusBottomEnd="20dp"
         app:passwordToggleEnabled="true"
-        app:passwordToggleDrawable="@drawable/show_pass">
+        app:passwordToggleDrawable="@drawable/visibility">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/confpasswordEditText"
+            android:id="@+id/confpasswordEdt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/confpassword"
