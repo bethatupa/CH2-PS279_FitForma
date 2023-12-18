@@ -35,4 +35,5 @@
     <string name="bmr">BMR</string>
     <string name="saran">Saran Aktivitas</string>
     <string name="saran_desc">deskripsi saran</string>
+    <string name="gender">Gender</string>
 </resources>

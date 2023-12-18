@@ -55,13 +55,14 @@ class RegisterActivity : AppCompatActivity() {
             val name = binding.nameEdt.text.toString()
             val email = binding.emailEdt.text.toString()
             val age = binding.ageEdt.text.toString()
+            val gender = binding.genderEdt.text.toString()
             val weight = binding.weightEdt.text.toString()
             val height = binding.heightEdt.text.toString()
             val pass = binding.passwordEdt.text.toString()
             val confpass = binding.confpasswordEdt.text.toString()
-            if (name.isNotEmpty() && email.isNotEmpty() && pass.isNotEmpty() && confpass.isNotEmpty() && age.isNotEmpty() && weight.isNotEmpty() && height.isNotEmpty()) {
+            if (name.isNotEmpty() && email.isNotEmpty() && pass.isNotEmpty() && confpass.isNotEmpty() && age.isNotEmpty() && weight.isNotEmpty() && height.isNotEmpty() && gender.isNotEmpty()) {
                 if (pass == confpass) {
-                    registerAcc(name, email, pass, age, weight, height)
+                    registerAcc(name, email, pass, age, gender, weight, height)
                 } else {
                     Toast.makeText(this, "Password is not matching", Toast.LENGTH_SHORT).show()
                 }
@@ -76,6 +77,7 @@ class RegisterActivity : AppCompatActivity() {
         email: String,
         pass: String,
         age: String,
+        gender: String,
         weight: String,
         height: String
     ) {
@@ -86,6 +88,7 @@ class RegisterActivity : AppCompatActivity() {
                         "name" to name,
                         "email" to email,
                         "age" to age,
+                        "gender" to gender,
                         "weight" to weight,
                         "height" to height
                     )
@@ -108,6 +111,15 @@ class RegisterActivity : AppCompatActivity() {
                     ).show()
                 }
             }
+    }
+
+    //TODO implement body bmi bmr function
+
+    private fun showBMI(){
+
+    }
+    private fun calculateBMI(){
+
     }
 
     private fun togglePasswordVisibility() {
