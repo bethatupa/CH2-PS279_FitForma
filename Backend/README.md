@@ -40,3 +40,7 @@ Response e.g
     }
 
 ```
+## Database Design
+![1702884951](https://github.com/bethatupa/CH2-PS279_FitForma/assets/93138224/46034e2e-0ff9-4bb1-a749-9c216f4e34fb)
+
+
