@@ -4,6 +4,7 @@ import (
 	"context"
 	"math/rand"
 	"net/http"
+	"strconv"
 	"time"
 
 	"cloud.google.com/go/firestore"
@@ -21,6 +22,7 @@ type UserRepository interface {
 	Save(ctx context.Context, user *entity.User) (*entity.User, error)
 	Authenticate(ctx context.Context, req *entity.LoginPayload) error
 	FindAll(ctx context.Context) (*[]entity.User, error)
+	FindById(ctx context.Context, id string) (*entity.User, error)
 }
 
 type repo struct {
@@ -118,4 +120,22 @@ func (u *repo) FindAll(ctx context.Context) (*[]entity.User, error) {
 		users = append(users, user)
 	}
 	return &users, nil
+}
+
+func (u *repo) FindById(ctx context.Context, id string) (*entity.User, error) {
+	userId, _ := strconv.Atoi(id)
+	iter := u.client.Collection(collectionName).Where("ID", "==", userId).Limit(1).Documents(ctx)
+	doc, err := iter.Next()
+	if err != nil {
+		return nil, echo.NewHTTPError(http.StatusNotFound, "User not found.")
+	}
+	if err != nil {
+		return nil, echo.NewHTTPError(http.StatusInternalServerError, err.Error())
+	}
+	var user entity.User
+	if err := doc.DataTo(&user); err != nil {
+		return nil, echo.NewHTTPError(http.StatusInternalServerError, err.Error())
+	}
+
+	return &user, nil
 }
