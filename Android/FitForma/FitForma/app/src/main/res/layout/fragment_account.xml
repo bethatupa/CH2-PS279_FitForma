@@ -47,10 +47,20 @@
         android:text="@string/age"
         android:textSize="20sp"/>
     <TextView
-        android:id="@+id/weightTextView"
+        android:id="@+id/genderTextView"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/ageTextView"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:padding="10dp"
+        android:text="@string/gender"
+        android:textSize="20sp"/>
+    <TextView
+        android:id="@+id/weightTextView"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/genderTextView"
         android:layout_marginStart="50dp"
         android:layout_marginTop="30dp"
         android:padding="10dp"
@@ -75,7 +85,7 @@
         android:backgroundTint="@color/blue"
         android:layout_below="@id/heightTextView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="85dp"/>
 
     <Button
         android:id="@+id/logoutBtn"
