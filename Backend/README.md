@@ -1,5 +1,5 @@
 # FitForma Authentication
-Rest API for Registration,authenticiation Fitforma Apps
+Simple Restful API for Fitforma Apps
 
 
 ## Setup Environtment
