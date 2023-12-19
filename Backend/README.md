@@ -16,15 +16,9 @@ export PROJECT_ID=""
 POST api/v1/users
 Request e.g 
   {                               
-      "statusCode":int,        
-      "message":string,        
-      "data":{                 
-        "id":int,
-        "email":string,
-        "password":string,
-        "country":string,
-        "createdAt":timestamp
-      }                        
+      "email":string,
+      "password":string,
+      "country":string
   }                            
 ```
 ### Get users            
@@ -32,9 +26,15 @@ Request e.g
 GET api/v1/users          
 Response e.g                
     {                      
-        "email":string,    
-        "password":string, 
-        "country":string,  
+        "statusCode":int,
+        "message":string,
+        "data":[
+          "id":int,
+          "email":string,
+          "password":string,
+          "country":string,
+          "createdAt":timestamp
+        ]
     }                      
 ```                        
 
