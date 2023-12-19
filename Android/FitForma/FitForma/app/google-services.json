@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "135839957087",
+    "firebase_url": "https://fitforma-44e6f-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "fitforma-44e6f",
+    "storage_bucket": "fitforma-44e6f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135839957087:android:f23ba8ecdc0f9f4bf71bea",
+        "android_client_info": {
+          "package_name": "com.example.fitforma"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJJt__9jpL0TDT1h5xDV2YCVdfFALQsKg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
