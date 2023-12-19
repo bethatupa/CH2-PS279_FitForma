@@ -1,7 +1,7 @@
 package app
 
 import (
-	"math/rand"
+	"context"
 	"net/http"
 	"time"
 
@@ -17,19 +17,22 @@ import (
 type RouterInterface interface {
 	CreateUser(c echo.Context) error
 	Authenticate(c echo.Context) error
+	GetAllUsers(c echo.Context) error
 }
 
 type Router struct {
 	repo repository.UserRepository
 	key  []byte
 	v    *validator.Validate
+	ctx  context.Context
 }
 
-func NewRouter(validator *validator.Validate, repo repository.UserRepository, secretKey []byte) RouterInterface {
+func NewRouter(ctx context.Context, validator *validator.Validate, repo repository.UserRepository, secretKey []byte) RouterInterface {
 	return &Router{
 		v:    validator,
 		repo: repo,
 		key:  secretKey,
+		ctx:  ctx,
 	}
 
 }
@@ -56,8 +59,7 @@ func (r *Router) CreateUser(c echo.Context) error {
 		}
 		return c.JSON(http.StatusBadRequest, web.ApiError{StatusCode: http.StatusBadRequest, Error: errorResponse})
 	}
-	user.ID = rand.Int()
-	_, err = r.repo.Save(&user)
+	_, err = r.repo.Save(r.ctx, &user)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, web.ApiError{
 			StatusCode: http.StatusBadRequest,
@@ -68,7 +70,6 @@ func (r *Router) CreateUser(c echo.Context) error {
 		StatusCode: http.StatusOK,
 		Message:    "Succesfully created user",
 		Data: web.UserCreatedResponse{
-			ID:        user.ID,
 			CreatedAt: time.Now(),
 		},
 	})
@@ -85,7 +86,7 @@ func (r *Router) Authenticate(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError,
 			web.ApiError{StatusCode: http.StatusInternalServerError, Error: "Error unmarshalling data:"})
 	}
-	err = r.repo.Authenticate(loginPayload)
+	err = r.repo.Authenticate(r.ctx, loginPayload)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, web.ApiError{StatusCode: http.StatusBadRequest, Error: err})
 	}
@@ -111,4 +112,18 @@ func (r *Router) Authenticate(c echo.Context) error {
 			AccessToken: tokenResult,
 		},
 	})
+}
+
+func (r *Router) GetAllUsers(c echo.Context) error {
+	users, err := r.repo.FindAll(r.ctx)
+
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, web.ApiError{StatusCode: http.StatusBadRequest, Error: err})
+	}
+	return c.JSON(http.StatusOK, web.ApiResponse{
+		StatusCode: http.StatusOK,
+		Message:    "Fetch all users succesfully",
+		Data:       users,
+	},
+	)
 }
