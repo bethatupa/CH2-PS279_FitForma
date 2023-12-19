@@ -47,15 +47,15 @@ class AccountFragment : Fragment() {
                     if (document != null && document.exists()) {
                         val name = document.getString("name")
                         val email = document.getString("email")
-                        val age = document.getString("age")
+                        val age = document.getLong("age")
                         val gender = document.getString("gender")
-                        val weight = document.getString("weight")
-                        val height = document.getString("height")
+                        val weight = document.getDouble("weight")
+                        val height = document.getDouble("height")
 
                         binding.usernameTextView.text = name
                         binding.emailTextView.text = email
 
-                        if (!age.isNullOrEmpty()) {
+                        if (!age.toString().isNullOrEmpty()) {
                             binding.tvAge.visibility = View.VISIBLE
                             binding.tvAge.text = "$age"
                         }
@@ -65,12 +65,12 @@ class AccountFragment : Fragment() {
                             binding.tvGender.text = "$gender"
                         }
 
-                        if (!weight.isNullOrEmpty()) {
+                        if (!weight.toString().isNullOrEmpty()) {
                             binding.tvWeight.visibility = View.VISIBLE
                             binding.tvWeight.text = "$weight"
                         }
 
-                        if (!height.isNullOrEmpty()) {
+                        if (!height.toString().isNullOrEmpty()) {
                             binding.tvHeight.visibility = View.VISIBLE
                             binding.tvHeight.text = "$height"
                         }

@@ -16,6 +16,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.math.BigInteger
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -56,14 +57,14 @@ class RegisterActivity : AppCompatActivity() {
             binding.btnRegis.setOnClickListener {
             val name = binding.nameEdt.text.toString()
             val email = binding.emailEdt.text.toString()
-            val age = binding.ageEdt.text.toString()
+            val age = binding.ageEdt.text.toString().toInt()
             val gender = binding.genderEdt.text.toString()
-            val weight = binding.weightEdt.text.toString()
-            val height = binding.heightEdt.text.toString()
+            val weight = binding.weightEdt.text.toString().toDouble()
+            val height = binding.heightEdt.text.toString().toDouble()
             val pass = binding.passwordEdt.text.toString()
             val confpass = binding.confpasswordEdt.text.toString()
 
-            if (name.isNotEmpty() && email.isNotEmpty() && pass.isNotEmpty() && confpass.isNotEmpty() && age.isNotEmpty() && weight.isNotEmpty() && height.isNotEmpty() && gender.isNotEmpty()) {
+            if (name.isNotEmpty() && email.isNotEmpty() && pass.isNotEmpty() && confpass.isNotEmpty() && age.toString().isNotEmpty() && weight.toString().isNotEmpty() && height.toString().isNotEmpty() && gender.isNotEmpty()) {
                 if (pass == confpass) {
                     registerAcc(name, email, pass, age, gender, weight, height)
                 } else {
@@ -78,10 +79,10 @@ class RegisterActivity : AppCompatActivity() {
         name: String,
         email: String,
         pass: String,
-        age: String,
+        age: Int,
         gender: String,
-        weight: String,
-        height: String
+        weight: Double,
+        height: Double
     ) {
         firebaseAuth.createUserWithEmailAndPassword(email, pass)
             .addOnCompleteListener(this) {

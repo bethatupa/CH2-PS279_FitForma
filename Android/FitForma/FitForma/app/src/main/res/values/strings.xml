@@ -33,7 +33,7 @@
     <string name="main_greet">Hello,</string>
     <string name="bmi">BMI</string>
     <string name="bmr">BMR</string>
-    <string name="saran">Saran Aktivitas</string>
+    <string name="saran">Activity Advice</string>
     <string name="saran_desc">deskripsi saran</string>
     <string name="gender">Gender</string>
     <string name="weight_2">Weight</string>
@@ -43,5 +43,6 @@
     <string name="tv_gender">user\'s gender view</string>
     <string name="tv_weight">user\'s weight view</string>
     <string name="tv_height">user\'s height view</string>
+    <string name="gender_hint">male / female</string>
 
 </resources>
