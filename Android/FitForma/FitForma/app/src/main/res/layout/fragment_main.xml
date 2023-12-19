@@ -18,13 +18,13 @@
         android:id="@+id/tv_person"
         android:layout_width="190dp"
         android:layout_height="278dp"
-        android:layout_below="@id/tv_username"
+        android:layout_below="@id/tv_name"
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:src="@drawable/person_normal_black" />
 
     <TextView
-        android:id="@+id/tv_username"
+        android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/main_greeting"
@@ -37,7 +37,7 @@
         android:id="@+id/tv_bmi"
         android:layout_width="100dp"
         android:layout_height="115dp"
-        android:layout_below="@id/tv_username"
+        android:layout_below="@id/tv_name"
         android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
         android:layout_toEndOf="@+id/tv_person"

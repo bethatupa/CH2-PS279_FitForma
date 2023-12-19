@@ -36,4 +36,11 @@
     <string name="saran">Saran Aktivitas</string>
     <string name="saran_desc">deskripsi saran</string>
     <string name="gender">Gender</string>
+    <string name="weight_2">Weight</string>
+    <string name="height_2">Height</string>
+    <string name="tv_age">user\'s age view</string>
+    <string name="details">Details</string>
+    <string name="tv_gender">user\'s gender view</string>
+    <string name="tv_weight">user\'s weight view</string>
+    <string name="tv_height">user\'s height view</string>
 </resources>

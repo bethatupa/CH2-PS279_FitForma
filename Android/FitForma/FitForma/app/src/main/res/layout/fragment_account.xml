@@ -6,14 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.account.AccountActivity">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profileImage"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        tools:src="@tools:sample/avatars"
-        android:scaleType="centerCrop"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"/>
 
     <TextView
         android:id="@+id/usernameTextView"
@@ -22,9 +14,8 @@
         android:text="@string/name"
         android:textStyle="bold"
         android:textSize="28sp"
-        android:layout_below="@id/profileImage"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="50dp"/>
 
     <TextView
         android:id="@+id/emailTextView"
@@ -37,65 +28,120 @@
         android:layout_marginTop="4dp"/>
 
     <TextView
-        android:id="@+id/ageTextView"
-        android:layout_width="250dp"
+        android:id="@+id/acc_detail"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/emailTextView"
-        android:layout_marginStart="50dp"
         android:layout_marginTop="30dp"
+        android:layout_marginStart="50dp"
+        android:textStyle="bold"
+        android:text="@string/details"/>
+
+    <ImageView
+        android:id="@+id/line"
+        android:layout_width="350dp"
+        android:layout_height="5dp"
+        android:layout_below="@id/acc_detail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/shadow_bg"/>
+
+    <TextView
+        android:id="@+id/ageTextView"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
         android:padding="10dp"
         android:text="@string/age"
-        android:textSize="20sp"/>
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/tv_age"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/genderTextView"
+        android:layout_below="@+id/line"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:layout_toEndOf="@+id/ageTextView"
+        android:text="@string/tv_age"
+        android:textSize="18sp" />
+
     <TextView
         android:id="@+id/genderTextView"
-        android:layout_width="250dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/ageTextView"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="30dp"
         android:padding="10dp"
         android:text="@string/gender"
-        android:textSize="20sp"/>
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/tv_gender"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/weightTextView"
+        android:layout_marginStart="150dp"
+        android:layout_marginBottom="15dp"
+        android:layout_toEndOf="@+id/ageTextView"
+        android:textSize="18sp"
+        android:text="@string/tv_gender" />
+
     <TextView
         android:id="@+id/weightTextView"
-        android:layout_width="250dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/genderTextView"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="30dp"
         android:padding="10dp"
-        android:text="@string/weight"
-        android:textSize="20sp"/>
+        android:text="@string/weight_2"
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/tv_weight"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/heightTextView"
+        android:layout_marginStart="150dp"
+        android:layout_marginBottom="15dp"
+        android:layout_toEndOf="@+id/ageTextView"
+        android:textSize="18sp"
+        android:text="@string/tv_weight" />
+
     <TextView
         android:id="@+id/heightTextView"
-        android:layout_width="250dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/weightTextView"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="30dp"
         android:padding="10dp"
-        android:text="@string/height"
-        android:textSize="20sp"/>
-
-    <Button
-        android:id="@+id/editProfileButton"
-        android:layout_width="wrap_content"
+        android:text="@string/height_2"
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/tv_height"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="@string/editProfile"
-        android:backgroundTint="@color/blue"
-        android:layout_below="@id/heightTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="85dp"/>
+        android:layout_above="@+id/logoutBtn"
+        android:layout_marginStart="150dp"
+        android:layout_marginBottom="15dp"
+        android:layout_toEndOf="@+id/ageTextView"
+        android:textSize="18sp"
+        android:text="@string/tv_height" />
 
     <Button
         android:id="@+id/logoutBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/logout"
         android:backgroundTint="@color/red"
-        android:layout_below="@id/editProfileButton"
+        android:layout_below="@id/heightTextView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="100dp"/>
 
 
 </RelativeLayout>

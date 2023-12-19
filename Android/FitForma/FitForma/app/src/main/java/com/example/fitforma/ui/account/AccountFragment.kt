@@ -56,23 +56,23 @@ class AccountFragment : Fragment() {
                         binding.emailTextView.text = email
 
                         if (!age.isNullOrEmpty()) {
-                            binding.ageTextView.visibility = View.VISIBLE
-                            binding.ageTextView.text = "Age: $age"
+                            binding.tvAge.visibility = View.VISIBLE
+                            binding.tvAge.text = "$age"
                         }
 
                         if (!gender.isNullOrEmpty()) {
-                            binding.genderTextView.visibility = View.VISIBLE
-                            binding.genderTextView.text = "Age: $gender"
+                            binding.tvGender.visibility = View.VISIBLE
+                            binding.tvGender.text = "$gender"
                         }
 
                         if (!weight.isNullOrEmpty()) {
-                            binding.weightTextView.visibility = View.VISIBLE
-                            binding.weightTextView.text = "Weight: $weight"
+                            binding.tvWeight.visibility = View.VISIBLE
+                            binding.tvWeight.text = "$weight"
                         }
 
                         if (!height.isNullOrEmpty()) {
-                            binding.heightTextView.visibility = View.VISIBLE
-                            binding.heightTextView.text = "Height: $height"
+                            binding.tvHeight.visibility = View.VISIBLE
+                            binding.tvHeight.text = "$height"
                         }
                     }
                 } else {
