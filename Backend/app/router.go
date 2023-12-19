@@ -18,6 +18,7 @@ type RouterInterface interface {
 	CreateUser(c echo.Context) error
 	Authenticate(c echo.Context) error
 	GetAllUsers(c echo.Context) error
+	FindById(c echo.Context) error
 }
 
 type Router struct {
@@ -126,4 +127,17 @@ func (r *Router) GetAllUsers(c echo.Context) error {
 		Data:       users,
 	},
 	)
+}
+
+func (r *Router) FindById(c echo.Context) error {
+	id := c.Param("id")
+	user, err := r.repo.FindById(r.ctx, id)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, web.ApiError{StatusCode: http.StatusBadRequest, Error: err})
+	}
+	return c.JSON(http.StatusOK, web.ApiResponse{
+		StatusCode: http.StatusOK,
+		Message:    "Fetch user by id succesfully",
+		Data:       user,
+	})
 }

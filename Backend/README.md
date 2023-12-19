@@ -21,7 +21,7 @@ Request e.g
       "country":string
   }                            
 ```
-### Get users            
+### Get Users            
 ```bash                    
 GET api/v1/users          
 Response e.g                
@@ -37,6 +37,22 @@ Response e.g
         ]
     }                      
 ```                        
+### Get User By Id
+```bash
+GET api/v1/users/id
+Response e.g 
+  {
+      "statusCode":int,
+      "message":string,
+      "data":{
+        "id":int,
+        "email":"string",
+        "password":string,
+        "country":string,
+        "createdAt":timestamp
+      }
+  }
+```
 
 ### Get Access Token
 ```bash

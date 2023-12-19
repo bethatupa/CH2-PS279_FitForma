@@ -37,5 +37,6 @@ func main() {
 	e.POST("/api/v1/users", router.CreateUser)
 	e.POST("/api/v1/auth", router.Authenticate)
 	e.GET("/api/v1/users", router.GetAllUsers, middleware.JWTMiddleware(SECRET_KEY))
+	e.GET("/api/v1/users/:id", router.FindById, middleware.JWTMiddleware(SECRET_KEY))
 	e.Logger.Fatal(e.Start(":1234"))
 }
