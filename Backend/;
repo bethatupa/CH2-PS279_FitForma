@@ -24,20 +24,19 @@ type Router struct {
 	repo repository.UserRepository
 	key  []byte
 	v    *validator.Validate
-	ctx  context.Context
 }
 
-func NewRouter(ctx context.Context, validator *validator.Validate, repo repository.UserRepository, secretKey []byte) RouterInterface {
+func NewRouter(validator *validator.Validate, repo repository.UserRepository, secretKey []byte) RouterInterface {
 	return &Router{
 		v:    validator,
 		repo: repo,
 		key:  secretKey,
-		ctx:  ctx,
 	}
 
 }
 
 func (r *Router) CreateUser(c echo.Context) error {
+	ctx := context.Background()
 	req := web.UserRequest{}
 	user := entity.User{
 		Email:    req.Email,
@@ -60,7 +59,7 @@ func (r *Router) CreateUser(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, web.ApiError{StatusCode: http.StatusBadRequest, Error: errorResponse})
 	}
 	user.ID = rand.Int()
-	_, err = r.repo.Save(r.ctx, &user)
+	_, err = r.repo.Save(&user)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, web.ApiError{
 			StatusCode: http.StatusBadRequest,
@@ -88,7 +87,7 @@ func (r *Router) Authenticate(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError,
 			web.ApiError{StatusCode: http.StatusInternalServerError, Error: "Error unmarshalling data:"})
 	}
-	err = r.repo.Authenticate(r.ctx, loginPayload)
+	err = r.repo.Authenticate(loginPayload)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, web.ApiError{StatusCode: http.StatusBadRequest, Error: err})
 	}

@@ -17,29 +17,28 @@ import (
 const collectionName string = "users"
 
 type UserRepository interface {
-	Save(user *entity.User) (*entity.User, error)
-	Authenticate(req *entity.LoginPayload) error
+	Save(ctx context.Context, user *entity.User) (*entity.User, error)
+	Authenticate(ctx context.Context, req *entity.LoginPayload) error
+	// GetAllUsers() ([]*entity.User, error)
 }
 
 type repo struct {
 	projectID string
+	client    *firestore.Client
 }
 
-func NewUserRepository(projectId string) UserRepository {
-	return &repo{
-		projectID: projectId,
-	}
-}
-
-func (u *repo) Save(user *entity.User) (*entity.User, error) {
-	ctx := context.Background()
-	client, err := firestore.NewClient(ctx, u.projectID)
+func NewUserRepository(ctx context.Context, projectId string) (UserRepository, error) {
+	client, err := firestore.NewClient(ctx, projectId)
 	if err != nil {
 		return nil, echo.NewHTTPError(http.StatusInternalServerError, "Failed to create a Firestore client")
 	}
-	defer client.Close()
+	return &repo{
+		client: client,
+	}, nil
+}
 
-	emailExists, err := helper.ValidateEmailExists(ctx, client, collectionName, user.Email)
+func (u *repo) Save(ctx context.Context, user *entity.User) (*entity.User, error) {
+	emailExists, err := helper.ValidateEmailExists(ctx, u.client, collectionName, user.Email)
 	if err != nil {
 		return nil, echo.NewHTTPError(http.StatusInternalServerError, "Error checking email existence:", err)
 	}
@@ -52,7 +51,7 @@ func (u *repo) Save(user *entity.User) (*entity.User, error) {
 	if err != nil {
 		return nil, echo.NewHTTPError(http.StatusBadRequest, bcrypt.ErrPasswordTooLong.Error())
 	}
-	_, _, err = client.Collection(collectionName).Add(ctx, map[string]interface{}{
+	_, _, err = u.client.Collection(collectionName).Add(ctx, map[string]interface{}{
 		"Email":     user.Email,
 		"Password":  password,
 		"Country":   user.Country,
@@ -64,15 +63,8 @@ func (u *repo) Save(user *entity.User) (*entity.User, error) {
 	return user, nil
 }
 
-func (u *repo) Authenticate(req *entity.LoginPayload) error {
-	ctx := context.Background()
-	client, err := firestore.NewClient(ctx, u.projectID)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusInternalServerError, "Failed to create a Firestore client")
-	}
-	defer client.Close()
-
-	docRef := client.Collection(collectionName).Where("Email", "==", req.Email).Documents(ctx)
+func (u *repo) Authenticate(ctx context.Context, req *entity.LoginPayload) error {
+	docRef := u.client.Collection(collectionName).Where("Email", "==", req.Email).Documents(ctx)
 	defer docRef.Stop()
 
 	var userExists bool
@@ -102,3 +94,9 @@ func (u *repo) Authenticate(req *entity.LoginPayload) error {
 
 	return echo.NewHTTPError(http.StatusUnauthorized, "Invalid email or password.")
 }
+
+// func (u *repo) GetAllUsers() ([]*entity.User, error) {
+// 	ctx := context.Background()
+//
+// 	return nil, err
+// }

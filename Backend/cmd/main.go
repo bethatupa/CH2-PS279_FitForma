@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"log"
 	"os"
 
@@ -26,8 +27,12 @@ func main() {
 
 	e := echo.New()
 	v := validator.New()
-	var repo repository.UserRepository = repository.NewUserRepository(projectId)
-	router := app.NewRouter(v, repo, SECRET_KEY)
+	ctx := context.Background()
+	repo, err := repository.NewUserRepository(ctx, projectId)
+	if err != nil {
+		log.Fatalf("error firestore : %v", err)
+	}
+	router := app.NewRouter(ctx, v, repo, SECRET_KEY)
 
 	e.POST("/api/v1/users", router.CreateUser)
 	e.POST("/api/v1/auth", router.Authenticate)
