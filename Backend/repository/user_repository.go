@@ -2,6 +2,7 @@ package repository
 
 import (
 	"context"
+	"math/rand"
 	"net/http"
 	"time"
 
@@ -19,7 +20,7 @@ const collectionName string = "users"
 type UserRepository interface {
 	Save(ctx context.Context, user *entity.User) (*entity.User, error)
 	Authenticate(ctx context.Context, req *entity.LoginPayload) error
-	// GetAllUsers() ([]*entity.User, error)
+	FindAll(ctx context.Context) (*[]entity.User, error)
 }
 
 type repo struct {
@@ -52,8 +53,9 @@ func (u *repo) Save(ctx context.Context, user *entity.User) (*entity.User, error
 		return nil, echo.NewHTTPError(http.StatusBadRequest, bcrypt.ErrPasswordTooLong.Error())
 	}
 	_, _, err = u.client.Collection(collectionName).Add(ctx, map[string]interface{}{
+		"ID":        rand.Intn(10000),
 		"Email":     user.Email,
-		"Password":  password,
+		"Password":  string(password),
 		"Country":   user.Country,
 		"CreatedAt": time.Now(),
 	})
@@ -78,9 +80,9 @@ func (u *repo) Authenticate(ctx context.Context, req *entity.LoginPayload) error
 		}
 		if docSnap.Exists() {
 			userExists = true
-			hashedPassword, ok := docSnap.Data()["Password"].([]uint8)
+			hashedPassword, ok := docSnap.Data()["Password"].(string)
 			if !ok {
-				return echo.NewHTTPError(http.StatusInternalServerError, "Password field is not a []uint8 type")
+				return echo.NewHTTPError(http.StatusInternalServerError, "Password field is not a string type")
 			}
 			err := bcrypt.CompareHashAndPassword([]byte(hashedPassword), []byte(req.Password))
 			if err == nil {
@@ -95,8 +97,25 @@ func (u *repo) Authenticate(ctx context.Context, req *entity.LoginPayload) error
 	return echo.NewHTTPError(http.StatusUnauthorized, "Invalid email or password.")
 }
 
-// func (u *repo) GetAllUsers() ([]*entity.User, error) {
-// 	ctx := context.Background()
-//
-// 	return nil, err
-// }
+func (u *repo) FindAll(ctx context.Context) (*[]entity.User, error) {
+	var users []entity.User
+	iter := u.client.Collection("users").Documents(ctx)
+	defer iter.Stop()
+	for {
+		doc, err := iter.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			if err != nil {
+				return nil, echo.NewHTTPError(http.StatusInternalServerError, err.Error())
+			}
+		}
+		var user entity.User
+		if err := doc.DataTo(&user); err != nil {
+			return nil, echo.NewHTTPError(http.StatusInternalServerError, err.Error())
+		}
+		users = append(users, user)
+	}
+	return &users, nil
+}

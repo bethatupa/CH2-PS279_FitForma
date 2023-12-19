@@ -11,7 +11,6 @@ import (
 
 func EntityToCreateUser(user entity.User) *web.UserCreatedResponse {
 	return &web.UserCreatedResponse{
-		ID:        user.ID,
 		CreatedAt: user.CreatedAt,
 	}
 }
