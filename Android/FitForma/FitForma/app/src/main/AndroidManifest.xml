@@ -20,19 +20,10 @@
         android:theme="@style/Theme.FitForma"
         tools:targetApi="tiramisu">
         <activity
-            android:name=".ui.setting.SettingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.search.ResultActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.search.SearchActivity"
             android:exported="false" />
         <activity
             android:name=".ui.food.DetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.slider.PersonInfoActivity"
             android:exported="false" />
         <activity
             android:name=".ui.account.AccountActivity"

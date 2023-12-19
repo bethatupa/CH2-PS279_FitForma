@@ -1,9 +1,11 @@
 package com.example.fitforma.ui.register
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.fitforma.R
@@ -51,7 +53,7 @@ class RegisterActivity : AppCompatActivity() {
             toggleConfPasswordVisibility()
         }
 
-        binding.btnRegis.setOnClickListener {
+            binding.btnRegis.setOnClickListener {
             val name = binding.nameEdt.text.toString()
             val email = binding.emailEdt.text.toString()
             val age = binding.ageEdt.text.toString()
@@ -60,6 +62,7 @@ class RegisterActivity : AppCompatActivity() {
             val height = binding.heightEdt.text.toString()
             val pass = binding.passwordEdt.text.toString()
             val confpass = binding.confpasswordEdt.text.toString()
+
             if (name.isNotEmpty() && email.isNotEmpty() && pass.isNotEmpty() && confpass.isNotEmpty() && age.isNotEmpty() && weight.isNotEmpty() && height.isNotEmpty() && gender.isNotEmpty()) {
                 if (pass == confpass) {
                     registerAcc(name, email, pass, age, gender, weight, height)
@@ -71,7 +74,6 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
     }
-//TODO benerin koneksi firestore
     private fun registerAcc(
         name: String,
         email: String,
@@ -97,9 +99,10 @@ class RegisterActivity : AppCompatActivity() {
                         .addOnSuccessListener {
                             Toast.makeText(this, "Welcome", Toast.LENGTH_SHORT).show()
                         }
-                        .addOnFailureListener {
-                            Toast.makeText(this, "Failed to save data", Toast.LENGTH_SHORT).show()
-                        }
+                        .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+//                        .addOnFailureListener {
+//                            Toast.makeText(this, "Failed to save data", Toast.LENGTH_SHORT).show()
+//                        }
                     val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
                     finish()
