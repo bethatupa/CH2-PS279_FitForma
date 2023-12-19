@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/bethatupa/CH2-PS279_FitForma/app"
+	"github.com/bethatupa/CH2-PS279_FitForma/middleware"
 	"github.com/bethatupa/CH2-PS279_FitForma/repository"
 	"github.com/go-playground/validator"
 	"github.com/labstack/echo/v4"
@@ -35,6 +36,6 @@ func main() {
 
 	e.POST("/api/v1/users", router.CreateUser)
 	e.POST("/api/v1/auth", router.Authenticate)
-	e.GET("/api/v1/users", router.GetAllUsers)
+	e.GET("/api/v1/users", router.GetAllUsers, middleware.JWTMiddleware(SECRET_KEY))
 	e.Logger.Fatal(e.Start(":1234"))
 }
