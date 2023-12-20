@@ -84,15 +84,15 @@ class AfterRegisActivity : AppCompatActivity() {
         when (bmiCategory) {
             "Underweight" -> {
                 binding.tvAdvice.visibility = View.VISIBLE
-                binding.tvAdvice.text = "Gain your Weight"
+                binding.tvAdvice.text = "You need to gain your weight"
             }
             "Normal Weight" -> {
                 binding.tvAdvice.visibility = View.VISIBLE
-                binding.tvAdvice.text = "Maintain your weight"
+                binding.tvAdvice.text = "You can Reduce/Maintain/Gain your weight"
             }
             "Overweight" -> {
                 binding.tvAdvice.visibility = View.VISIBLE
-                binding.tvAdvice.text = "Reduce your weight"
+                binding.tvAdvice.text = "You need to reduce your weight"
             }
         }
     }

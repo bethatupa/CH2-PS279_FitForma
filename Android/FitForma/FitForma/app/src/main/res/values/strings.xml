@@ -56,7 +56,7 @@
     <string name="gain_desc">gain description</string>
     <string name="next">Next</string>
     <string name="bmi_afterReg">"From your weight and height calculation,\nYour BMI Category is "</string>
-    <string name="advice">"Based on your BMI, you need to, "</string>
+    <string name="advice">"Based on your BMI,"</string>
     <string name="goodluck">Good Luck!</string>
 
 </resources>

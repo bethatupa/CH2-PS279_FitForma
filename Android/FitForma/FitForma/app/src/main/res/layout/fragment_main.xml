@@ -13,7 +13,6 @@
         android:textColor="@color/black"
         android:textSize="20sp"/>
 
-<!--    person image changing dynamicly on activity-->
     <ImageView
         android:id="@+id/tv_person"
         android:layout_width="190dp"
@@ -101,6 +100,14 @@
         android:layout_marginStart="20dp"
         android:text="@string/reduce"
         android:textSize="18sp" />
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="-10dp"
+        android:layout_below="@id/goals_textView"
+        android:src="@drawable/shadow_bg"/>
 
     <TextView
         android:id="@+id/maintain_textView"
