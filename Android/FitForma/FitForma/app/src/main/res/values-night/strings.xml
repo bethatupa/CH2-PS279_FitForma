@@ -44,4 +44,5 @@
     <string name="tv_weight">user\'s weight view</string>
     <string name="tv_height">user\'s height view</string>
     <string name="gender_hint">male / female</string>
+    <string name="gallery">Gallery</string>
 </resources>

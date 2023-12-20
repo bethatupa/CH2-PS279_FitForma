@@ -1,9 +1,9 @@
 package com.example.fitforma.ui.search
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,10 +11,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.example.fitforma.databinding.FragmentSearchBinding
+import com.example.fitforma.ui.food.DetailActivity
 import com.example.fitforma.utils.getImageUri
 
 class SearchFragment : Fragment() {
@@ -53,8 +54,23 @@ class SearchFragment : Fragment() {
         if (!allPermissionsGranted()) {
             requestPermissionLauncher.launch(REQUIRED_PERMISSION)
         }
-
+        binding.searchGallery.setOnClickListener { startGallery() }
         binding.searchScan.setOnClickListener { startCamera() }
+    }
+
+    private val launcherGallery = registerForActivityResult(
+        ActivityResultContracts.PickVisualMedia()
+    ) { uri: Uri? ->
+        if (uri != null) {
+            currentImageUri = uri
+            showImage()
+        } else {
+            Log.d("Photo Picker", "No media selected")
+        }
+    }
+
+    private fun startGallery() {
+        launcherGallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
     }
 
     private fun startCamera() {
@@ -73,7 +89,11 @@ class SearchFragment : Fragment() {
     private fun showImage() {
         currentImageUri?.let {
             Log.d("Image URI", "showImage: $it")
-            //binding.previewImageView.setImageURI(it)
+            binding.searchImg.setImageURI(it)
+
+            val intent = Intent(requireContext(), DetailActivity::class.java)
+            intent.putExtra(DetailActivity.EXTRA_IMAGE_URI, it.toString())
+            startActivity(intent)
         }
     }
 
