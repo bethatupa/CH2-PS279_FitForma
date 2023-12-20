@@ -20,6 +20,9 @@
         android:theme="@style/Theme.FitForma"
         tools:targetApi="tiramisu">
         <activity
+            android:name=".ui.register.AfterRegisActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.search.SearchActivity"
             android:exported="false" />
         <activity

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.register.AfterRegisActivity">
+
+    <TextView
+        android:id="@+id/category_textView"
+        android:layout_width="230dp"
+        android:layout_height="275dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/bmi_afterReg"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_bmi_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/category_textView"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="-20dp"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:text="@string/bmi"/>
+
+    <TextView
+        android:id="@+id/advice_textView"
+        android:layout_width="277dp"
+        android:layout_height="75dp"
+        android:layout_below="@id/tv_bmi_category"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/advice"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/tv_advice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/advice_textView"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="-15dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:text="@string/maintain"/>
+
+    <TextView
+        android:id="@+id/gl_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_advice"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="25dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:text="@string/goodluck"/>
+
+    <Button
+        android:id="@+id/next_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gl_textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="@string/next" />
+
+
+</RelativeLayout>

@@ -104,7 +104,7 @@ class RegisterActivity : AppCompatActivity() {
 //                        .addOnFailureListener {
 //                            Toast.makeText(this, "Failed to save data", Toast.LENGTH_SHORT).show()
 //                        }
-                    val intent = Intent(this, LoginActivity::class.java)
+                    val intent = Intent(this, AfterRegisActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {

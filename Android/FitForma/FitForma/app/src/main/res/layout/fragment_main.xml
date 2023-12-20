@@ -19,7 +19,6 @@
         android:layout_width="190dp"
         android:layout_height="278dp"
         android:layout_below="@id/tv_name"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:src="@drawable/person_normal_black" />
 
@@ -38,26 +37,27 @@
         android:layout_width="120dp"
         android:layout_height="115dp"
         android:layout_below="@id/tv_name"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
         android:layout_toEndOf="@+id/tv_person"
         android:text="@string/bmi"
         android:textSize="25sp"
         android:padding="10dp"
-        android:background="@drawable/shadow_bg"/>
+        android:background="@drawable/shadow_rec"
+        android:elevation="10dp"/>
 
     <TextView
         android:id="@+id/tv_bmr"
         android:layout_width="120dp"
         android:layout_height="115dp"
         android:layout_below="@id/tv_bmi"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
         android:layout_toEndOf="@+id/tv_person"
         android:text="@string/bmr"
         android:textSize="25sp"
         android:padding="10dp"
-        android:background="@drawable/shadow_bg"/>
+        android:background="@drawable/shadow_rec"
+        android:elevation="10dp"/>
 
     <TextView
         android:id="@+id/tv_saran"
@@ -65,19 +65,86 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_person"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30sp"
+        android:layout_marginTop="10sp"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:text="@string/saran"/>
+        android:text="@string/bmi_category"/>
 
     <TextView
-        android:id="@+id/tv_saran_desc"
-        android:layout_width="330dp"
-        android:layout_height="200dp"
+        android:id="@+id/tv_bmi_category"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_person"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_saran"
+        android:text="@string/tv_category"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/goals_textView"
+        android:layout_width="89dp"
+        android:layout_height="37dp"
         android:layout_below="@id/tv_saran"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/saran_desc"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:text="@string/goals"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/reduce_textView"
+        android:layout_width="89dp"
+        android:layout_height="25dp"
+        android:layout_below="@id/goals_textView"
+        android:layout_marginStart="20dp"
+        android:text="@string/reduce"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/maintain_textView"
+        android:layout_width="89dp"
+        android:layout_height="25dp"
+        android:layout_below="@id/tv_reduce"
+        android:layout_marginStart="20dp"
+        android:text="@string/maintain"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/gain_textView"
+        android:layout_width="90dp"
+        android:layout_height="25dp"
+        android:layout_below="@id/tv_maintain"
+        android:layout_marginStart="20dp"
+        android:text="@string/Gain"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_reduce"
+        android:layout_width="360dp"
+        android:layout_height="70dp"
+        android:layout_below="@id/reduce_textView"
+        android:layout_marginStart="20dp"
+        android:text="@string/reduce_desc"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_maintain"
+        android:layout_width="360dp"
+        android:layout_height="70dp"
+        android:layout_below="@id/maintain_textView"
+        android:layout_marginStart="20dp"
+        android:text="@string/maintain_desc"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_gain"
+        android:layout_width="360dp"
+        android:layout_height="70dp"
+        android:layout_below="@id/gain_textView"
+        android:layout_marginStart="20dp"
+        android:text="@string/gain_desc"
         android:textSize="15sp" />
 
 

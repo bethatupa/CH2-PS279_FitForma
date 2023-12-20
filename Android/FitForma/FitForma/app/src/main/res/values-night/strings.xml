@@ -45,4 +45,17 @@
     <string name="tv_height">user\'s height view</string>
     <string name="gender_hint">male / female</string>
     <string name="gallery">Gallery</string>
+    <string name="bmi_category">"Your BMI Category : "</string>
+    <string name="tv_category">bmi cat</string>
+    <string name="goals">Goals</string>
+    <string name="reduce">Reduce</string>
+    <string name="maintain">Maintain</string>
+    <string name="Gain">Gain</string>
+    <string name="reduce_desc">reduce description</string>
+    <string name="maintain_desc">maintain description</string>
+    <string name="gain_desc">gain description</string>
+    <string name="next">Next</string>
+    <string name="bmi_afterReg">"From your weight and height calculation,\nYour BMI Category is "</string>
+    <string name="advice">"Based on your BMI, you need to, "</string>
+    <string name="goodluck">Good Luck!</string>
 </resources>

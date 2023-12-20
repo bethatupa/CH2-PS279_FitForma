@@ -1,5 +1,6 @@
 package com.example.fitforma.ui.main
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -55,10 +56,6 @@ class MainFragment : Fragment() {
                             val bmr = calculateBMR(weight, height, age, gender)
 
                             // Display BMI and BMR in the UI
-                            if(bmi < 18.5) {
-                                binding.tvPerson.visibility = View.VISIBLE
-
-                            }
                             binding.tvBmi.visibility = View.VISIBLE
                             binding.tvBmi.text = String.format("BMI: %.2f", bmi)
 
@@ -66,6 +63,7 @@ class MainFragment : Fragment() {
                             binding.tvBmr.text = String.format("BMR: %.2f", bmr)
 
                             val bmiCategory = determineBMICategory(bmi)
+                            setBMICat(bmiCategory)
                             setBmiImage(bmiCategory)
                             setAdvice(bmiCategory)
                         }
@@ -131,17 +129,53 @@ class MainFragment : Fragment() {
         binding.tvPerson.setImageResource(imageResource as Int)
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setAdvice(bmiCategory: String) {
         // Set the advice based on the BMI category
-        val adviceText = when (bmiCategory) {
-            "Underweight" -> "You may need to gain weight. Consult with a nutritionist or doctor for a safe weight gain plan."
-            "Normal Weight" -> "Your weight is in the normal range. Maintain a healthy diet and regular physical activity."
-            "Overweight" -> "You may need to reduce weight. Consult with a nutritionist or doctor for a safe weight loss plan."
-            else -> "You may need special attention. Consult with a doctor or nutritionist."
-        }
+        when (bmiCategory) {
+            "Underweight" -> {
+                binding.tvReduce.visibility = View.VISIBLE
+                binding.tvReduce.text = "Include nutrient-rich foods in your diet and focus on healthy weight gain strategies."
 
-        binding.tvSaranDesc.visibility = View.VISIBLE
-        binding.tvSaranDesc.text = adviceText
+                binding.tvMaintain.visibility = View.VISIBLE
+                binding.tvMaintain.text = "Maintain a balanced diet with a mix of carbohydrates, proteins, and healthy fats."
+
+                binding.tvGain.visibility = View.VISIBLE
+                binding.tvGain.text = "Engage in strength training exercises to build muscle mass and gain weight in a healthy way."
+            }
+            "Normal Weight" -> {
+                binding.tvReduce.visibility = View.VISIBLE
+                binding.tvReduce.text = "Engage in regular exercise to maintain a healthy weight and overall well-being."
+
+                binding.tvMaintain.visibility = View.VISIBLE
+                binding.tvMaintain.text = "Maintain a balanced diet with a mix of carbohydrates, proteins, and healthy fats."
+
+                binding.tvGain.visibility = View.VISIBLE
+                binding.tvGain.text = "Consider strength training exercises to build muscle mass and achieve a healthy weight."
+            }
+            "Overweight" -> {
+                binding.tvReduce.visibility = View.VISIBLE
+                binding.tvReduce.text = "Focus on a balanced diet with portion control and regular exercise to achieve weight loss."
+
+                binding.tvMaintain.visibility = View.VISIBLE
+                binding.tvMaintain.text = "Maintain a healthy lifestyle with regular physical activity and mindful eating."
+
+                binding.tvGain.visibility = View.VISIBLE
+                binding.tvGain.text = "Consider consulting with a nutritionist for personalized advice on safe weight loss strategies."
+            }
+        }
+    }
+
+    private fun setBMICat(bmiCategory: String){
+        val setCat = when (bmiCategory) {
+            "Underweight" -> "Underweight"
+            "Normal Weight" -> "Normal Weight"
+            "Overweight" -> "Overweight"
+            else -> ":("
+        }
+        // Show appropriate advice based on the BMI category
+        binding.tvBmiCategory.text = setCat
+
     }
 
     override fun onDestroyView() {
