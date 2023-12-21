@@ -10,7 +10,7 @@ import com.example.fitforma.ui.search.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,8 +19,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         bottomNavigationView = binding.bottomNav
-        bottomNavigationView.setOnItemSelectedListener{ bottom_navigation_menu ->
-            when(bottom_navigation_menu.itemId){
+        bottomNavigationView.setOnItemSelectedListener { bottom_navigation_menu ->
+            when (bottom_navigation_menu.itemId) {
                 R.id.navigation_home -> {
                     replaceFragment(MainFragment())
                     true
@@ -45,8 +45,18 @@ class MainActivity : AppCompatActivity() {
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        moveTaskToBack(true)
-        super.onBackPressed()
-    }
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.container)
 
+        // Check if the current fragment is the MainFragment
+        if (currentFragment is MainFragment) {
+            // Exit the app when the back button is pressed on the MainFragment
+            finish()
+        } else {
+            // Navigate up in the fragment's hierarchy for other fragments
+            super.onBackPressed()
+        }
+    }
 }
+
+
+

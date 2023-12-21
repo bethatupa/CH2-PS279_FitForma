@@ -48,6 +48,7 @@ class LoginActivity : AppCompatActivity() {
                     if (it.isSuccessful) {
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
+                        finish()
                     } else {
                         Toast.makeText(this, "Wrong Password or Email", Toast.LENGTH_SHORT).show()
                     }
@@ -94,8 +95,13 @@ class LoginActivity : AppCompatActivity() {
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        moveTaskToBack(true)
-        super.onBackPressed()
+        // Check if the user is on the login screen (LoginActivity)
+        if (isTaskRoot) {
+            // If on the login screen, exit the app
+            moveTaskToBack(true)
+        } else {
+            // If not on the login screen, perform the default back action
+            super.onBackPressed()
+        }
     }
-
 }
