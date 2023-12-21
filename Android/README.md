@@ -8,5 +8,5 @@
 <li>Tensorflow lite</li>
 
 # Application Documentation
-![Project Logo](./Images/mainpage.jpg)
+![Project Logo](Images/mainpage.jpg)
 
