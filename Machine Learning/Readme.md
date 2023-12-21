@@ -4,9 +4,9 @@
 - The model we have is our own custom created model
 
 ## Datasets
-Dataset 1 Link: [Dataset 1](https://www.kaggle.com/datasets/theresalusiana/indonesian-food/data)
-Dataset 2 Link: [Dataset 2](https://www.kaggle.com/datasets/faldoae/padangfood)
-Cleaned Dataset: [Cleaned Dataset](https://drive.google.com/drive/folders/13AOguZA8xAyGQVkCxg0vusX5o7yEcAVS?usp=sharing)
+Dataset 1 Link: [Dataset 1](https://www.kaggle.com/datasets/theresalusiana/indonesian-food/data).
+Dataset 2 Link: [Dataset 2](https://www.kaggle.com/datasets/faldoae/padangfood).
+Cleaned Dataset: [Cleaned Dataset](https://drive.google.com/drive/folders/13AOguZA8xAyGQVkCxg0vusX5o7yEcAVS?usp=sharing).
 
 ## Food Classifications:
 1. bakso
