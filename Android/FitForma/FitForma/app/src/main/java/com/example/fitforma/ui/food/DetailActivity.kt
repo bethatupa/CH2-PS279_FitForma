@@ -43,30 +43,155 @@
 //    }
 //}
 //
+
+//version 1
+//package com.example.fitforma.ui.food
+////
+////import android.content.Intent
+////import android.graphics.Bitmap
+////import android.media.ThumbnailUtils
+////import android.net.Uri
+////import android.os.Bundle
+////import android.widget.ImageView
+////import android.widget.TextView
+////import androidx.appcompat.app.AppCompatActivity
+////import com.example.fitforma.R
+////import com.example.fitforma.ml.Model9Class
+////import org.tensorflow.lite.DataType
+////import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
+////import java.io.IOException
+////import java.nio.ByteBuffer
+////import java.nio.ByteOrder
+////
+////
+////class DetailActivity : AppCompatActivity() {
+////    private val imageSize = 28
+////    private lateinit var detail_name: TextView
+////    private lateinit var imageView: ImageView
+////
+////    override fun onCreate(savedInstanceState: Bundle?) {
+////        super.onCreate(savedInstanceState)
+////        setContentView(R.layout.activity_detail)
+////
+////        // Retrieve the Uri from the Intent
+////        val imageUriString = intent.getStringExtra(EXTRA_IMAGE_URI)
+////        val imageUri = Uri.parse(imageUriString)
+////
+////        // Display the selected image in the ImageView
+////        imageView = findViewById(R.id.detail_img)
+////        imageView.setImageURI(imageUri)
+////
+////        // Find TextViews by their IDs
+////        detail_name = findViewById(R.id.detail_name)
+////    }
+////
+////    fun classifyImage(image: Bitmap) {
+////        try {
+////            val model = Model9Class.newInstance(this)
+////
+////            // Creates inputs for reference.
+////            val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 28, 28, 3), DataType.FLOAT32)
+////            val byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3)
+////            byteBuffer.order(ByteOrder.nativeOrder())
+////
+////            val intValues = IntArray(imageSize * imageSize)
+////            image.getPixels(intValues, 0, image.width, 0, 0, image.width, image.height)
+////            var pixel = 0
+////            for (i in 0 until imageSize) {
+////                for (j in 0 until imageSize) {
+////                    val `val` = intValues[pixel++] // RGB
+////                    byteBuffer.putFloat((`val` shr 16 and 0xFF) * (1f / 255f))
+////                    byteBuffer.putFloat((`val` shr 8 and 0xFF) * (1f / 255f))
+////                    byteBuffer.putFloat((`val` and 0xFF) * (1f / 255f))
+////                }
+////            }
+////            inputFeature0.loadBuffer(byteBuffer)
+////
+////            // Runs model inference and gets result.
+////            val outputs = model.process(inputFeature0)
+////            val outputFeature0: TensorBuffer = outputs.getOutputFeature0AsTensorBuffer()
+////            val confidences = outputFeature0.floatArray
+////            var maxPos = 0
+////            var maxConfidence = 0f
+////            for (i in confidences.indices) {
+////                if (confidences[i] > maxConfidence) {
+////                    maxConfidence = confidences[i]
+////                    maxPos = i
+////                }
+////            }
+////            val classes = arrayOf(
+////                "bakso",
+////                "gado",
+////                "nasi goreng polos",
+////                "nasi goreng telor ceplok",
+////                "nasi goreng udang",
+////                "rendang",
+////                "sate",
+////                "telur asin",
+////                "telur balado"
+////            )
+////
+////            runOnUiThread {
+////                detail_name.text = classes[maxPos]
+////                var s = ""
+////                for (i in classes.indices) {
+////                    s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100)
+////                }
+////            }
+////
+////            // Releases model resources if no longer used.
+////            model.close()
+////        } catch (e: IOException) {
+////            // TODO Handle the exception
+////        }
+////    }
+////
+////    @Deprecated("Deprecated in Java")
+////    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+////        if (requestCode == 1 && resultCode == RESULT_OK) {
+////            var image = data!!.extras!!["data"] as Bitmap?
+////            val dimension = Math.min(image!!.width, image.height)
+////            image = ThumbnailUtils.extractThumbnail(image, dimension, dimension)
+////
+////            runOnUiThread {
+////                imageView.setImageBitmap(image)
+////                image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false)
+////                classifyImage(image)
+////            }
+////        }
+////        super.onActivityResult(requestCode, resultCode, data)
+////    }
+////
+////    companion object {
+////        const val EXTRA_IMAGE_URI = "extra_image_uri"
+////    }
+////}
+
+//OG Code from youtube ===========================================================
 package com.example.fitforma.ui.food
 
-import android.content.Intent
 import android.graphics.Bitmap
-import android.media.ThumbnailUtils
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fitforma.R
 import com.example.fitforma.ml.Model9Class
 import org.tensorflow.lite.DataType
+import org.tensorflow.lite.support.common.FileUtil
+import org.tensorflow.lite.support.image.ImageProcessor
+import org.tensorflow.lite.support.image.TensorImage
+import org.tensorflow.lite.support.image.ops.ResizeOp
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.io.IOException
-import java.nio.ByteBuffer
-import java.nio.ByteOrder
-
+import java.nio.MappedByteBuffer
 
 class DetailActivity : AppCompatActivity() {
-    private val imageSize = 28
-    private lateinit var detail_name: TextView
-    private lateinit var imageView: ImageView
-
+    lateinit var predBtn: Button
+    lateinit var bitmap: Bitmap
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
@@ -75,89 +200,55 @@ class DetailActivity : AppCompatActivity() {
         val imageUriString = intent.getStringExtra(EXTRA_IMAGE_URI)
         val imageUri = Uri.parse(imageUriString)
 
+
         // Display the selected image in the ImageView
-        imageView = findViewById(R.id.detail_img)
-        imageView.setImageURI(imageUri)
+        val detailImageView = findViewById<ImageView>(R.id.detail_img)
+        detailImageView.setImageURI(imageUri)
 
-        // Find TextViews by their IDs
-        detail_name = findViewById(R.id.detail_name)
-    }
+        bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, imageUri)
 
-    fun classifyImage(image: Bitmap) {
-        try {
+        val detailname = findViewById<TextView>(R.id.detail_name)
+
+        predBtn = findViewById(R.id.PredictBtn)
+
+        //labels
+        var labels = application.assets.open("labels.txt").bufferedReader().readLines()
+
+        //Image Processor
+        var imageProcessor = ImageProcessor.Builder()
+            .add(ResizeOp(28,28,ResizeOp.ResizeMethod.BILINEAR))
+            .build()
+
+        predBtn.setOnClickListener{
+
+            var tensorImage = TensorImage(DataType.UINT8)
+            tensorImage.load(bitmap)
+
+            tensorImage = imageProcessor.process(tensorImage)
+
             val model = Model9Class.newInstance(this)
 
             // Creates inputs for reference.
             val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 28, 28, 3), DataType.FLOAT32)
-            val byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3)
-            byteBuffer.order(ByteOrder.nativeOrder())
-
-            val intValues = IntArray(imageSize * imageSize)
-            image.getPixels(intValues, 0, image.width, 0, 0, image.width, image.height)
-            var pixel = 0
-            for (i in 0 until imageSize) {
-                for (j in 0 until imageSize) {
-                    val `val` = intValues[pixel++] // RGB
-                    byteBuffer.putFloat((`val` shr 16 and 0xFF) * (1f / 255f))
-                    byteBuffer.putFloat((`val` shr 8 and 0xFF) * (1f / 255f))
-                    byteBuffer.putFloat((`val` and 0xFF) * (1f / 255f))
-                }
-            }
-            inputFeature0.loadBuffer(byteBuffer)
+            inputFeature0.loadBuffer(tensorImage.buffer)
 
             // Runs model inference and gets result.
             val outputs = model.process(inputFeature0)
-            val outputFeature0: TensorBuffer = outputs.getOutputFeature0AsTensorBuffer()
-            val confidences = outputFeature0.floatArray
-            var maxPos = 0
-            var maxConfidence = 0f
-            for (i in confidences.indices) {
-                if (confidences[i] > maxConfidence) {
-                    maxConfidence = confidences[i]
-                    maxPos = i
-                }
-            }
-            val classes = arrayOf(
-                "bakso",
-                "gado",
-                "nasi goreng polos",
-                "nasi goreng telor ceplok",
-                "nasi goreng udang",
-                "rendang",
-                "sate",
-                "telur asin",
-                "telur balado"
-            )
+            val outputFeature0 = outputs.outputFeature0AsTensorBuffer.floatArray
 
-            runOnUiThread {
-                detail_name.text = classes[maxPos]
-                var s = ""
-                for (i in classes.indices) {
-                    s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100)
+            var maxIdx = 0
+            outputFeature0.forEachIndexed{index, fl ->
+                if (outputFeature0[maxIdx] < fl){
+                    maxIdx = index
                 }
             }
+
+            detailname.text = labels[maxIdx]
 
             // Releases model resources if no longer used.
             model.close()
-        } catch (e: IOException) {
-            // TODO Handle the exception
         }
-    }
 
-    @Deprecated("Deprecated in Java")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == 1 && resultCode == RESULT_OK) {
-            var image = data!!.extras!!["data"] as Bitmap?
-            val dimension = Math.min(image!!.width, image.height)
-            image = ThumbnailUtils.extractThumbnail(image, dimension, dimension)
-
-            runOnUiThread {
-                imageView.setImageBitmap(image)
-                image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false)
-                classifyImage(image)
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data)
     }
 
     companion object {
