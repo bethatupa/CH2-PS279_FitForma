@@ -9,7 +9,7 @@ Dataset 2 Link: [Dataset 2](https://www.kaggle.com/datasets/faldoae/padangfood)
 Cleaned Dataset: [Cleaned Dataset](https://drive.google.com/drive/folders/13AOguZA8xAyGQVkCxg0vusX5o7yEcAVS?usp=sharing)
 
 ## Food Classifications:
-⋅⋅1. bakso
+1. bakso
 2. gado
 3. nasi goreng polos
 4. nasi goreng telur ceplok
