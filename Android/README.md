@@ -8,6 +8,6 @@
 <li>Tensorflow lite</li>
 
 # Application Documentation
-<img src="Images/mainpage.jpg" alt="Main Page" width="300px" height="200px">
+<img src="Images/mainpage.jpg" alt="Main Page" width="300px" height="1080px">
 
 
