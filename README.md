@@ -4,7 +4,7 @@ FitForma is a Capstone Project application that helps people to lose, gain and m
 ## Team ID
 Team Member:
 | No | Student ID | Name | Paths |
-| -- | ---------- | ---- | ----- |
+| -- | ---------- | :----: | :---: |
 | 1 | M102BSY0164 | Leonard Winata | Machine Learning |
 | 2 | M102BSY0423 | Juanda Gilang Purnomo | Machine Learning |
 | 3 | M102BSY0187 | Betha H.E. Tupa | Machine Learning |
