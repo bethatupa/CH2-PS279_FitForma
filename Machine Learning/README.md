@@ -11,8 +11,12 @@
 - Cleaned Dataset: [Cleaned Dataset](https://drive.google.com/drive/folders/13AOguZA8xAyGQVkCxg0vusX5o7yEcAVS?usp=drive_link).
 
 ## Model Accuracy
+![image](https://github.com/bethatupa/CH2-PS279_FitForma/assets/48861223/4b677ff5-a4df-4c40-a3fe-5ad9146144dd)
+
 
 ## Confusion Matrix
+![image](https://github.com/bethatupa/CH2-PS279_FitForma/assets/48861223/00c8f485-78a2-4949-8a98-6c97e09eddf5)
+
 
 ## Food Classifications:
 1. bakso <br />
