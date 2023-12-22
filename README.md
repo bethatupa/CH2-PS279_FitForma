@@ -13,6 +13,6 @@ Team Member:
 | 6 | A239BSY2140 | Nathan Ariel Phedra | Mobile Development |
 
 ## README.md Navigations
-- (Machine Learning README.md)[https://github.com/bethatupa/CH2-PS279_FitForma/blob/main/Machine%20Learning/README.md]
-- (Cloud Computing README.md)[https://github.com/bethatupa/CH2-PS279_FitForma/blob/main/Backend/README.md]
-- (Mobile Development README.md)[https://github.com/bethatupa/CH2-PS279_FitForma/blob/main/Android/README.md]
+- [Machine Learning README.md](https://github.com/bethatupa/CH2-PS279_FitForma/blob/main/Machine%20Learning/README.md)
+- [Cloud Computing README.md](https://github.com/bethatupa/CH2-PS279_FitForma/blob/main/Backend/README.md)
+- [Mobile Development README.md](https://github.com/bethatupa/CH2-PS279_FitForma/blob/main/Android/README.md)
