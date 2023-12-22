@@ -42,7 +42,7 @@
         android:layout_width="75dp"
         android:layout_height="37dp"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="44dp"
         android:background="@drawable/shadow_bg"
         android:gravity="center"
         android:text="@string/food_weight"
@@ -55,7 +55,7 @@
         android:layout_width="75dp"
         android:layout_height="37dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="44dp"
         android:background="@drawable/shadow_bg"
         android:gravity="center"
         android:text="@string/food_kal"
@@ -68,7 +68,7 @@
         android:layout_width="75dp"
         android:layout_height="37dp"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="44dp"
         android:background="@drawable/shadow_bg"
         android:gravity="center"
         android:text="@string/food_karbo"
@@ -80,12 +80,51 @@
 
     <TextView
         android:id="@+id/detail_desc"
-        android:layout_width="350dp"
-        android:layout_height="300dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="334dp"
+        android:layout_height="271dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
         android:text="@string/description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/food_kal" />
+
+    <TextView
+        android:id="@+id/Porsi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:text="@string/porsi"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/food_weight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detail_name"
+        app:layout_constraintVertical_bias="0.64" />
+
+    <TextView
+        android:id="@+id/Calory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/calory"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/Carbo"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toEndOf="@+id/Porsi"
+        app:layout_constraintTop_toBottomOf="@+id/detail_name" />
+
+    <TextView
+        android:id="@+id/Carbo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/carbo"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/food_weight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.914"
+        app:layout_constraintStart_toEndOf="@+id/Carbo"
+        app:layout_constraintTop_toBottomOf="@+id/detail_name"
+        app:layout_constraintVertical_bias="0.64"
+        tools:ignore="DuplicateIds,NotSibling" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

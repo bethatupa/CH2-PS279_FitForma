@@ -16,7 +16,6 @@ import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.math.BigInteger
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -101,9 +100,6 @@ class RegisterActivity : AppCompatActivity() {
                             Toast.makeText(this, "Welcome", Toast.LENGTH_SHORT).show()
                         }
                         .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
-//                        .addOnFailureListener {
-//                            Toast.makeText(this, "Failed to save data", Toast.LENGTH_SHORT).show()
-//                        }
                     val intent = Intent(this, AfterRegisActivity::class.java)
                     startActivity(intent)
                     finish()
@@ -115,15 +111,6 @@ class RegisterActivity : AppCompatActivity() {
                     ).show()
                 }
             }
-    }
-
-    //TODO implement body bmi bmr function
-
-    private fun showBMI(){
-
-    }
-    private fun calculateBMI(){
-
     }
 
     private fun togglePasswordVisibility() {
@@ -155,7 +142,13 @@ class RegisterActivity : AppCompatActivity() {
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        moveTaskToBack(true)
-        super.onBackPressed()
+        // Check if the user is on the login screen (LoginActivity)
+        if (isTaskRoot) {
+            // If on the login screen, exit the app
+            moveTaskToBack(true)
+        } else {
+            // If not on the login screen, perform the default back action
+            super.onBackPressed()
+        }
     }
 }

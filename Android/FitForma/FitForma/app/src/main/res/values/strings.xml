@@ -58,5 +58,8 @@
     <string name="bmi_afterReg">"From your weight and height calculation,\nYour BMI Category is "</string>
     <string name="advice">"Based on your BMI,"</string>
     <string name="goodluck">Good Luck!</string>
+    <string name="carbo">Carbo</string>
+    <string name="calory">Calory</string>
+    <string name="porsi">Porsi</string>
 
 </resources>

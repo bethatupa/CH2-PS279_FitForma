@@ -134,14 +134,18 @@ class MainFragment : Fragment() {
         // Set the advice based on the BMI category
         when (bmiCategory) {
             "Underweight" -> {
+                binding.reduceTextView.visibility = View.VISIBLE
+                binding.reduceTextView.text = "Gain"
                 binding.tvReduce.visibility = View.VISIBLE
-                binding.tvReduce.text = "Include nutrient-rich foods in your diet and focus on healthy weight gain strategies."
+                binding.tvReduce.text = "Engage in strength training exercises to build muscle mass and gain weight in a healthy way."
 
+                binding.maintainTextView.visibility = View.VISIBLE
+                binding.maintainTextView.text = "Activity Advice"
                 binding.tvMaintain.visibility = View.VISIBLE
-                binding.tvMaintain.text = "Maintain a balanced diet with a mix of carbohydrates, proteins, and healthy fats."
+                binding.tvMaintain.text = "- More Protein Food \n" + "- Lifting Weight \n" + "- Start Bulking"
 
-                binding.tvGain.visibility = View.VISIBLE
-                binding.tvGain.text = "Engage in strength training exercises to build muscle mass and gain weight in a healthy way."
+                binding.tvGain.visibility = View.GONE
+                binding.tvGain.text = ""
             }
             "Normal Weight" -> {
                 binding.tvReduce.visibility = View.VISIBLE
@@ -158,10 +162,13 @@ class MainFragment : Fragment() {
                 binding.tvReduce.text = "Focus on a balanced diet with portion control and regular exercise to achieve weight loss."
 
                 binding.tvMaintain.visibility = View.VISIBLE
-                binding.tvMaintain.text = "Maintain a healthy lifestyle with regular physical activity and mindful eating."
+                binding.maintainTextView.visibility = View.VISIBLE
+                binding.maintainTextView.text = "Activity Advice"
+                binding.tvMaintain.text = "- More Cardio Activity \n" + "- Carbohydrate Diet \n" + "- Sugar Less Food"
 
-                binding.tvGain.visibility = View.VISIBLE
-                binding.tvGain.text = "Consider consulting with a nutritionist for personalized advice on safe weight loss strategies."
+                binding.tvGain.visibility = View.GONE
+                binding.gainTextView.visibility = View.GONE
+                binding.tvGain.text = ""
             }
         }
     }

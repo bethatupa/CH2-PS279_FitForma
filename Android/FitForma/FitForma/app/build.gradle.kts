@@ -47,22 +47,21 @@ dependencies {
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation ("com.google.android.material:material:1.10.0")
-    implementation ("androidx.navigation:navigation-fragment-ktx:2.7.5")
-    implementation ("androidx.navigation:navigation-ui-ktx:2.7.5")
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.7.6")
+    implementation ("androidx.navigation:navigation-ui-ktx:2.7.6")
     implementation ("com.google.android.material:material:1.10.0")
     implementation ("androidx.exifinterface:exifinterface:1.3.6")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
     implementation("androidx.preference:preference-ktx:1.2.1")
 
-    implementation("org.tensorflow:tensorflow-lite-support:0.1.0")
-    implementation("org.tensorflow:tensorflow-lite-metadata:0.1.0")
-    implementation ("org.tensorflow:tensorflow-lite:2.8.0")
-
+    implementation("org.tensorflow:tensorflow-lite-metadata:0.4.3")
+    implementation ("org.tensorflow:tensorflow-lite:2.10.0")
 
     implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation ("com.google.firebase:firebase-auth:22.3.0")
     implementation("com.google.firebase:firebase-firestore:24.10.0")
+    implementation("org.tensorflow:tensorflow-lite-support:0.4.3")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

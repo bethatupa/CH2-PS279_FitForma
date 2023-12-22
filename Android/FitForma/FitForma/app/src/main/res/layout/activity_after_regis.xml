@@ -18,15 +18,15 @@
 
     <TextView
         android:id="@+id/tv_bmi_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="266dp"
+        android:layout_height="62dp"
         android:layout_below="@id/category_textView"
         android:layout_marginStart="40dp"
         android:layout_marginTop="-25dp"
-        android:textSize="35sp"
+        android:text="@string/bmi"
         android:textColor="@color/orange"
-        android:textStyle="bold"
-        android:text="@string/bmi"/>
+        android:textSize="35sp"
+        android:textStyle="bold" />
 
 
     <TextView
@@ -42,8 +42,8 @@
 
     <TextView
         android:id="@+id/tv_advice"
-        android:layout_width="326dp"
-        android:layout_height="71dp"
+        android:layout_width="305dp"
+        android:layout_height="122dp"
         android:layout_below="@id/advice_textView"
         android:layout_marginStart="40dp"
         android:layout_marginTop="-15dp"
