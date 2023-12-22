@@ -10,6 +10,10 @@
 - Dataset 2 Link: [Dataset 2](https://www.kaggle.com/datasets/faldoae/padangfood). <br />
 - Cleaned Dataset: [Cleaned Dataset](https://drive.google.com/drive/folders/13AOguZA8xAyGQVkCxg0vusX5o7yEcAVS?usp=drive_link).
 
+## Model Accuracy
+
+## Confusion Matrix
+
 ## Food Classifications:
 1. bakso <br />
 2. gado <br />
